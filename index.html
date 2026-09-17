@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EGE Lesson: The Secrets of Flow</title>
+  <title>The Architecture of Flow: Secrets of the Mind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F9F8F6;
       --card: #FFFFFF;
-      --text: #2D2D2D;
-      --muted: #7A7A7A;
-      --accent: #8A9A86;
-      --accent-light: #E8EBE6;
-      --border: #E5E5E5;
-      --correct: #5C7A58;
-      --wrong: #A65D57;
+      --border: #E5E0D8;
+      --border-focus: #B8A898;
+      --text: #2D2A26;
+      --text-muted: #7A7265;
+      --accent: #8E7058;
+      --accent-soft: #F1ECE4;
+      --correct: #526E4E;
+      --correct-bg: #EEF4ED;
+      --wrong: #994D47;
+      --wrong-bg: #F7EEEE;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,359 +28,615 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      padding: 40px 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      padding: 45px 20px;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto;
     }
 
-    h1, h2, h3 { font-family: 'Lora', serif; color: var(--text); }
-    h1 { font-size: 2.2rem; font-weight: 500; margin-bottom: 5px; }
-    h2 { font-size: 1.6rem; font-weight: 500; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 40px;}
-    h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; }
+    header {
+      margin-bottom: 35px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
 
-    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 30px; letter-spacing: 0.5px; }
+    .date-tag {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin: 38px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border-radius: 14px;
+      padding: 26px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
     }
 
-    .text-box {
-      background: var(--accent-light);
-      padding: 20px;
+    .lead-box {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 18px 20px;
       border-radius: 8px;
-      border-left: 4px solid var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .text-box p { margin-bottom: 15px; text-align: justify; }
-    .text-box p:last-child { margin-bottom: 0; }
+    .reading-passage p {
+      margin-bottom: 16px;
+      text-align: justify;
+      color: #333;
+    }
+
+    .reading-passage p:last-child {
+      margin-bottom: 0;
+    }
 
     .instructions {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 15px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
       font-style: italic;
     }
 
-    .question { margin-bottom: 15px; }
-    
-    input[type="text"] {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      background: var(--bg);
-      transition: all 0.2s ease;
+    .exercise-row {
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--border);
     }
 
-    input[type="text"]:focus { border-color: var(--accent); background: var(--card); }
-    
-    .btn {
+    .exercise-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .gap-input {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .gap-input:focus {
+      border-color: var(--border-focus);
+      background: #fff;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .opt-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .opt-btn:hover {
+      border-color: var(--accent);
+      background: #fff;
+    }
+
+    .opt-btn.active-correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+      color: var(--correct);
+      font-weight: 500;
+    }
+
+    .opt-btn.active-wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+      color: var(--wrong);
+      font-weight: 500;
+    }
+
+    .btn-action {
+      margin-top: 14px;
       background: var(--accent);
-      color: white;
+      color: #fff;
       border: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-family: 'Inter', sans-serif;
+      padding: 9px 20px;
+      border-radius: 8px;
       font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
       transition: opacity 0.2s;
-      margin-top: 10px;
     }
 
-    .btn:hover { opacity: 0.9; }
+    .btn-action:hover {
+      opacity: 0.9;
+    }
 
-    .feedback {
+    .result-tag {
       display: inline-block;
-      margin-left: 10px;
-      font-size: 0.9rem;
+      margin-left: 12px;
+      font-size: 0.88rem;
       font-weight: 500;
     }
 
-    .options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    .opt-btn {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 6px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-    .opt-btn.correct { background: #e8f0e7; border-color: var(--correct); color: var(--correct); }
-    .opt-btn.wrong { background: #f5e9e8; border-color: var(--wrong); color: var(--wrong); }
-
-    ul.speaking-list {
+    ul.clean-list {
       margin-left: 20px;
       color: var(--text);
     }
-    ul.speaking-list li { margin-bottom: 8px; }
+
+    ul.clean-list li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 680px) {
+      body { padding: 22px 14px; }
+      h1 { font-size: 1.85rem; }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
+    
     <header>
-      <h1>Unit 9: The Secrets of the Mind</h1>
-      <p class="subtitle">Reading, Collocations, Modals of Deduction & EGE Practice</p>
+      <div class="date-tag">B2–C1 Focus & Happiness</div>
+      <h1>The Architecture of Flow: Secrets of the Mind</h1>
+      <div class="subtitle">Deep psychological reading, precision collocations, deduction modals, and EGE Task 4 speaking</div>
     </header>
 
-    <!-- 1. WARM UP -->
-    <h2>1. Warm-Up & Phonetics</h2>
+    <!-- 1. LEAD-IN DISCUSSION -->
+    <div class="section-title">1. Conceptual Lead-in: The Psychology of Contentment</div>
     <div class="card">
-      <h3>American /r/ & Flap T Workout</h3>
-      <p class="instructions">Read the sentences aloud. Pay attention to the rhotic /r/ and the flap /t/ (sounds like a soft Russian 'd' between vowels).</p>
-      <ul style="margin-left: 20px; margin-bottom: 20px;">
-        <li>"It is <strong>better</strong> to have a <strong>creative</strong> <strong>attitude</strong> towards <strong>demanding</strong> work."</li>
-        <li>"The <strong>writer</strong> <strong>carried</strong> out his <strong>research</strong> near the <strong>water</strong>."</li>
-      </ul>
-      
-      <h3>Lead-in Questions</h3>
-      <ul style="margin-left: 20px;">
-        <li>What activities make you completely lose track of time?</li>
-        <li>Do you think financial rewards are essential for happiness, or is passion more important?</li>
+      <div class="lead-box">
+        <p><strong>Philosophical Dilemma:</strong> Many people assume that complete relaxation (lying on a beach or scrolling through social media) brings the greatest happiness. Others claim that genuine contentment only emerges through mentally demanding, exhausting tasks.</p>
+      </div>
+      <ul class="clean-list">
+        <li>When was the last time you were so immersed in an activity that you completely lost track of time and forgot to check your phone? What were you doing?</li>
+        <li>Do you believe that beyond a certain income threshold, additional money ceases to have a measurable impact on personal well-being?</li>
+        <li>Why do creative professionals and athletes often push themselves to physical exhaustion instead of choosing an easier, more comfortable lifestyle?</li>
       </ul>
     </div>
 
-    <!-- 2. TEXT -->
-    <h2>2. Reading: The State of Flow</h2>
-    <div class="card">
-      <div class="text-box">
-        <p>Mihaly Csikszentmihalyi devoted his life to studying happiness. When he was a boy, he noticed that although many adults were wealthy, they were not always happy. This sometimes led them to behave in unpredictable ways. As a result of this, he decided to carry out extensive research to understand what happiness actually is.</p>
-        <p>He expanded his study by inventing the "experience sampling method." Ordinary people were asked to keep an electronic pager for a week, which gave out a beeping sound eight times a day. Every time it did so, they wrote down exactly how they felt and how much they were concentrating. This allowed researchers to track their mood objectively.</p>
-        <p>He discovered that people who achieve an ambition are not necessarily those with high incomes. In fact, people are happiest when they are in a state of "flow" — a zone of intense concentration where a challenge perfectly matches their skill level. This proves that achieving true satisfaction has very little to do with how much money we make.</p>
-      </div>
+    <!-- 2. READING PASSAGE -->
+    <div class="section-title">2. Reading: Unlocking the Secrets of Flow</div>
+    <div class="card reading-passage">
+      <p>For decades, psychologists operated under the assumption that human happiness was primarily tied to external achievements: material wealth, social recognition, and freedom from demanding physical labour. However, Hungarian-American psychologist Mihaly Csikszentmihalyi devoted his life to challenging this conventional view. Having observed the trauma and economic instability of post-war Europe as a boy, he was struck by how many affluent adults appeared profoundly discontented despite their comfortable surroundings. This observation prompted him to pursue academic research to determine what actually makes people feel that life is worth living.</p>
+
+      <p>To avoid relying on retrospective questionnaires, which are often distorted by flawed memories, Csikszentmihalyi developed an innovative methodology known as the "experience sampling method." Thousands of ordinary participants were instructed to carry an electronic pager for a week. Whenever the device emitted a beep at random intervals throughout the day, subjects immediately recorded what they were doing, whom they were with, and how deeply they were concentrating. This rigorous approach generated unprecedented empirical data regarding everyday consciousness and emotional equilibrium.</p>
+
+      <p>The findings defied popular expectations. Contrary to the modern belief that passive leisure constitutes ideal relaxation, people reported their lowest levels of mood while idling, watching television, or engaging in unstructured downtime. Conversely, peak moments of psychological gratification occurred when individuals were completely absorbed in a challenging activity. Csikszentmihalyi termed this mental state "flow" — an optimal experience characterised by intense focus, altered temporal perception, and the temporary disappearance of self-conscious anxiety.</p>
+
+      <p>Crucially, the emergence of flow requires an exact calibration between perceived challenge and personal ability. If an objective is excessively demanding, it induces severe anxiety; if the task proves overly simple, it promptly causes boredom. Flow exists strictly along the razor-thin boundary where an individual’s skillset is stretched to its utmost capacity. Whether a person is playing a complex piano sonata, conducting intricate surgical procedures, or navigating a treacherous mountain slope, the psychological signature remains identical.</p>
+
+      <p>Ultimately, this research suggests that contentment cannot be purchased, collected, or passively received. Financial security undoubtedly eliminates chronic distress up to a modest threshold, but beyond that dividing line, accumulating wealth produces diminishing psychological returns. Genuine fulfillment depends entirely on one’s capacity to structure attention around purposeful pursuits, dedicate energy to continuous self-improvement, and engage wholeheartedly with the present moment.</p>
     </div>
 
     <!-- 3. TEXT DISCUSSION -->
-    <h2>3. Text Discussion</h2>
+    <div class="section-title">3. Deep Analytical Discussion</div>
     <div class="card">
-      <ul style="margin-left: 20px;">
-        <li class="question">1. In your opinion, why did the author use pagers ("experience sampling") instead of just asking people "Are you happy?" at the end of the day?</li>
-        <li class="question">2. The text states that "achieving true satisfaction has very little to do with how much money we make." Do you agree with this statement in the context of modern society?</li>
-        <li class="question">3. Can studying at school or preparing for the EGE trigger a "flow state," or does it only happen with hobbies?</li>
+      <ul class="clean-list">
+        <li><strong>Memory Bias vs. Reality:</strong> Why do you think people consistently report that they want "more free time", yet when they actually receive hours of unstructured downtime, they often feel restless or flat?</li>
+        <li><strong>The School Dilemma:</strong> In your experience, do typical school tasks allow students to enter a state of flow, or do arbitrary grading criteria and strict time limits provoke too much anxiety?</li>
+        <li><strong>The Cost of Perfection:</strong> Can an obsession with entering flow and achieving ambitions cause someone to neglect interpersonal relationships and their own emotional health? Where is the balance?</li>
       </ul>
     </div>
 
-    <!-- 4. VOCABULARY (3 EXERCISES) -->
-    <h2>4. Vocabulary Practice</h2>
-    
-    <div class="card" id="vocab-ex1">
-      <h3>Exercise 1: High-Level Collocations (EGE 30-36 Prep)</h3>
-      <p class="instructions">Match the verbs with their nouns (type the correct verb: <strong>carry out, achieve, devote, cause, make</strong>).</p>
-      <div class="question">1. to <input type="text" id="v1_1" style="width: 100px;"> an ambition</div>
-      <div class="question">2. to <input type="text" id="v1_2" style="width: 100px;"> research on a topic</div>
-      <div class="question">3. to <input type="text" id="v1_3" style="width: 100px;"> problems for someone</div>
-      <div class="question">4. to <input type="text" id="v1_4" style="width: 100px;"> your life to science</div>
-      <div class="question">5. to <input type="text" id="v1_5" style="width: 100px;"> an impression on the examiner</div>
-      <button class="btn" onclick="checkVocab1()">Check</button> <span id="v1-res" class="feedback"></span>
-    </div>
+    <!-- 4. VOCABULARY LAB -->
+    <div class="section-title">4. Precision Lexis Workout</div>
 
-    <div class="card" id="vocab-ex2">
-      <h3>Exercise 2: Context Fill (Target Lexis)</h3>
-      <p class="instructions">Fill in the gaps using words: <strong>awake, impact, reward, time</strong>.</p>
-      <div class="question">1. The teacher's strict rules had a negative <input type="text" id="v2_1" style="width: 100px;"> on the students' motivation.</div>
-      <div class="question">2. He drank three cups of coffee just to stay <input type="text" id="v2_2" style="width: 100px;"> during the lecture.</div>
-      <div class="question">3. Did you pass the <input type="text" id="v2_3" style="width: 100px;"> by reading, or were you actually studying?</div>
-      <div class="question">4. Artists often paint for passion, not for a financial <input type="text" id="v2_4" style="width: 100px;">.</div>
-      <button class="btn" onclick="checkVocab2()">Check</button> <span id="v2-res" class="feedback"></span>
-    </div>
-
-    <div class="card" id="vocab-ex3">
-      <h3>Exercise 3: Word Formation (EGE 25-29)</h3>
-      <p class="instructions">Transform the word in capitals to fit the gap contextually and grammatically.</p>
-      <div class="question">1. His main <input type="text" id="v3_1" style="width: 120px;"> in life was to become a surgeon. <strong>(ACHIEVE)</strong></div>
-      <div class="question">2. The results of the study were highly <input type="text" id="v3_2" style="width: 120px;">. <strong>(PREDICT)</strong></div>
-      <div class="question">3. She works as a clinical <input type="text" id="v3_3" style="width: 120px;"> in London. <strong>(PSYCHOLOGY)</strong></div>
-      <button class="btn" onclick="checkVocab3()">Check</button> <span id="v3-res" class="feedback"></span>
-    </div>
-
-    <!-- 5. GRAMMAR & USE OF ENGLISH (4 EXERCISES) -->
-    <h2>5. Grammar & Use of English</h2>
-
+    <!-- Vocab 1: Dependent Collocations -->
     <div class="card">
-      <h3>Exercise 1: Modals of Deduction (Logic & Speculation)</h3>
-      <p class="instructions">Choose the correct modal verb to complete the deduction.</p>
-      <div class="question">
-        <p>1. "She got 100 points on her EGE exam. She _____ extremely hard all year!"</p>
-        <div class="options">
-          <button class="opt-btn" onclick="checkMulti(this, false)">must work</button>
-          <button class="opt-btn" onclick="checkMulti(this, true)">must have worked</button>
-          <button class="opt-btn" onclick="checkMulti(this, false)">can't have worked</button>
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 1: Dependent Collocations (EGE 30–36 Matrix)</h3>
+      <p class="instructions">Complete the sentences using the appropriate verb: <em>carry out, devote, achieve, cause, make</em> in the correct grammatical form.</p>
+
+      <div class="exercise-row">
+        <p>1. The laboratory received generous funding to <input type="text" id="v1_1" class="gap-input" style="width: 140px;" placeholder="verb"> empirical research on cognitive fatigue.</p>
+      </div>
+      <div class="exercise-row">
+        <p>2. Constantly shifting between multiple notifications will undoubtedly <input type="text" id="v1_2" class="gap-input" style="width: 140px;" placeholder="verb"> severe problems for your attention span.</p>
+      </div>
+      <div class="exercise-row">
+        <p>3. She decided to <input type="text" id="v1_3" class="gap-input" style="width: 140px;" placeholder="verb"> her remaining years in academia to mentoring underprivileged scholars.</p>
+      </div>
+      <div class="exercise-row">
+        <p>4. It took him over a decade of relentless training to finally <input type="text" id="v1_4" class="gap-input" style="width: 140px;" placeholder="verb"> his lifelong ambition.</p>
+      </div>
+      <div class="exercise-row">
+        <p>5. The candidate's measured response failed to <input type="text" id="v1_5" class="gap-input" style="width: 140px;" placeholder="verb"> a favourable impression on the examination board.</p>
+      </div>
+
+      <button class="btn-action" onclick="checkVocab1()">Verify Collocations</button>
+      <span id="v1-res" class="result-tag"></span>
+    </div>
+
+    <!-- Vocab 2: Contextual Distinction -->
+    <div class="card">
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 2: Contextual Precision</h3>
+      <p class="instructions">Insert the correct noun or adjective from the box: <em>diminishing, threshold, equilibrium, empirical, gratification</em>.</p>
+
+      <div class="exercise-row">
+        <p>1. Researchers gathered <input type="text" id="v2_1" class="gap-input" style="width: 150px;"> evidence rather than relying on subjective opinions.</p>
+      </div>
+      <div class="exercise-row">
+        <p>2. After reaching a basic salary, earning additional bonuses yielded <input type="text" id="v2_2" class="gap-input" style="width: 150px;"> psychological returns.</p>
+      </div>
+      <div class="exercise-row">
+        <p>3. He crossed a dangerous <input type="text" id="v2_3" class="gap-input" style="width: 150px;"> of stress beyond which he could no longer function effectively.</p>
+      </div>
+      <div class="exercise-row">
+        <p>4. Immediate digital <input type="text" id="v2_4" class="gap-input" style="width: 150px;"> from social media likes rarely produces lasting fulfillment.</p>
+      </div>
+      <div class="exercise-row">
+        <p>5. Daily meditation helped her restore her emotional <input type="text" id="v2_5" class="gap-input" style="width: 150px;"> during the exam session.</p>
+      </div>
+
+      <button class="btn-action" onclick="checkVocab2()">Verify Precision</button>
+      <span id="v2-res" class="result-tag"></span>
+    </div>
+
+    <!-- Vocab 3: Word Formation -->
+    <div class="card">
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 3: Word Formation (EGE 25–29 Format)</h3>
+      <p class="instructions">Derive the correct word from the capitalized base to fit the sentence contextually and grammatically.</p>
+
+      <div class="exercise-row">
+        <p>1. The unpredictable nature of modern life often leads to feelings of intense <input type="text" id="v3_1" class="gap-input" style="width: 160px;">. <strong>(ANXIOUS)</strong></p>
+      </div>
+      <div class="exercise-row">
+        <p>2. Her sudden resignation was entirely <input type="text" id="v3_2" class="gap-input" style="width: 160px;">, catching the whole department off guard. <strong>(EXPECT)</strong></p>
+      </div>
+      <div class="exercise-row">
+        <p>3. Entering a state of flow requires absolute, uninterrupted <input type="text" id="v3_3" class="gap-input" style="width: 160px;">. <strong>(CONCENTRATE)</strong></p>
+      </div>
+      <div class="exercise-row">
+        <p>4. Many artists consider external praise to be entirely <input type="text" id="v3_4" class="gap-input" style="width: 160px;"> to the creative act itself. <strong>(RELEVANT)</strong></p>
+      </div>
+
+      <button class="btn-action" onclick="checkVocab3()">Check Word Formation</button>
+      <span id="v3-res" class="result-tag"></span>
+    </div>
+
+    <!-- 5. GRAMMAR & USE OF ENGLISH -->
+    <div class="section-title">5. Advanced Grammar & Use of English</div>
+
+    <!-- Grammar 1: Modals of Deduction -->
+    <div class="card">
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 4: Modal Speculation (Present vs. Past Nuances)</h3>
+      <p class="instructions">Select the grammatically and logically impeccable modal form.</p>
+
+      <div class="exercise-row">
+        <p>1. "Look at him pacing nervously outside the hall. He _____ the results yet."</p>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_1')">mustn't have received</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, true, 'g1_1')">can't have received</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_1')">shouldn't receive</button>
         </div>
+        <span id="g1_1" class="result-tag"></span>
       </div>
-      <div class="question" style="margin-top: 15px;">
-        <p>2. "Look at the dark clouds. The tennis match _____ cancelled."</p>
-        <div class="options">
-          <button class="opt-btn" onclick="checkMulti(this, true)">might be</button>
-          <button class="opt-btn" onclick="checkMulti(this, false)">must have been</button>
-          <button class="opt-btn" onclick="checkMulti(this, false)">can't be</button>
+
+      <div class="exercise-row">
+        <p>2. "Her eyes are bloodshot and her notes cover the entire desk. She _____ all night."</p>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="evaluateChoice(this, true, 'g1_2')">must have been revising</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_2')">must revise</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_2')">can have revised</button>
         </div>
+        <span id="g1_2" class="result-tag"></span>
       </div>
-      <div class="question" style="margin-top: 15px;">
-        <p>3. "He _____ known about the surprise party; his face was completely shocked!"</p>
-        <div class="options">
-          <button class="opt-btn" onclick="checkMulti(this, false)">mustn't have</button>
-          <button class="opt-btn" onclick="checkMulti(this, false)">shouldn't have</button>
-          <button class="opt-btn" onclick="checkMulti(this, true)">can't have</button>
+
+      <div class="exercise-row">
+        <p>3. "I am not certain why Arthur missed the seminar; he _____ about the timetable change."</p>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_3')">can forget</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, true, 'g1_3')">might have forgotten</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_3')">must forget</button>
         </div>
+        <span id="g1_3" class="result-tag"></span>
+      </div>
+
+      <div class="exercise-row">
+        <p>4. "The experimental setup was flawless, so the unexpected glitch _____ by human error."</p>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="evaluateChoice(this, true, 'g1_4')">could have been caused</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_4')">must cause</button>
+          <button class="opt-btn" onclick="evaluateChoice(this, false, 'g1_4')">couldn't cause</button>
+        </div>
+        <span id="g1_4" class="result-tag"></span>
       </div>
     </div>
 
+    <!-- Grammar 2: Connectors of Contrast -->
     <div class="card">
-      <h3>Exercise 2: Contrast Linkers (Although vs. Despite)</h3>
-      <p class="instructions">Fill in: <strong>although, even though, despite, in spite of</strong>. (Multiple answers may be possible, use one).</p>
-      <div class="question">1. <input type="text" id="g2_1" style="width: 120px;"> the bad sound quality, the concert was amazing.</div>
-      <div class="question">2. <input type="text" id="g2_2" style="width: 120px;"> he studied happiness for 30 years, he still feels sad sometimes.</div>
-      <div class="question">3. She managed to finish the marathon <input type="text" id="g2_3" style="width: 120px;"> having a leg injury.</div>
-      <button class="btn" onclick="checkGrammar2()">Check</button> <span id="g2-res" class="feedback"></span>
-    </div>
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 5: Clauses of Contrast (Although / Even though / Despite / In spite of / Whereas)</h3>
+      <p class="instructions">Fill in the gaps with an appropriate contrast linker matching the grammatical structure.</p>
 
-    <div class="card">
-      <h3>Exercise 3: Key Word Transformation (Use of English)</h3>
-      <p class="instructions">Complete the second sentence using 2-5 words, including the word in bold.</p>
-      <div class="question">
-        <p>1. I am sure she didn't leave the office; her coat is still here. <strong>(CAN'T)</strong></p>
-        <p>She <input type="text" id="g3_1" style="width: 200px;"> the office; her coat is still here.</p>
+      <div class="exercise-row">
+        <p>1. <input type="text" id="g2_1" class="gap-input" style="width: 140px;"> suffering from chronic fatigue, she maintained exceptional academic standards.</p>
       </div>
-      <div class="question">
-        <p>2. Although the exam was difficult, everyone passed. <strong>(DESPITE)</strong></p>
-        <p>Everyone passed <input type="text" id="g3_2" style="width: 200px;"> difficult.</p>
+      <div class="exercise-row">
+        <p>2. The theoretical framework was solid, <input type="text" id="g2_2" class="gap-input" style="width: 140px;"> the practical implementation proved flawed.</p>
       </div>
-      <button class="btn" onclick="checkGrammar3()">Check</button> <span id="g3-res" class="feedback"></span>
+      <div class="exercise-row">
+        <p>3. <input type="text" id="g2_3" class="gap-input" style="width: 140px;"> he had been warned repeatedly about burnout, he took on another research project.</p>
+      </div>
+      <div class="exercise-row">
+        <p>4. Introverts often recharge in solitude, <input type="text" id="g2_4" class="gap-input" style="width: 140px;"> extroverts draw vitality from collective gatherings.</p>
+      </div>
+
+      <button class="btn-action" onclick="checkGrammar2()">Check Linkers</button>
+      <span id="g2-res" class="result-tag"></span>
     </div>
 
+    <!-- Grammar 3: Sentence Transformation -->
     <div class="card">
-      <h3>Exercise 4: Spot the Grammar Mistake</h3>
-      <p class="instructions">Each sentence has ONE mistake. Type the corrected sentence or phrase.</p>
-      <div class="question">1. "She must to be very tired after the flight." &rarr; <input type="text" id="g4_1" style="width: 200px;" placeholder="Correction"></div>
-      <div class="question">2. "Despite of the rain, we went for a walk." &rarr; <input type="text" id="g4_2" style="width: 200px;" placeholder="Correction"></div>
-      <div class="question">3. "You can't have saw him yesterday; he is in Paris!" &rarr; <input type="text" id="g4_3" style="width: 200px;" placeholder="Correction"></div>
-      <button class="btn" onclick="checkGrammar4()">Check</button> <span id="g4-res" class="feedback"></span>
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 6: Key Word Transformation (Use of English)</h3>
+      <p class="instructions">Complete the second sentence so that it has a similar meaning to the first, using between 2 and 5 words including the word in bold.</p>
+
+      <div class="exercise-row">
+        <p>1. I am confident that Julian did not commit that accounting error on purpose. <strong>(CAN'T)</strong></p>
+        <p style="margin-top: 6px;">Julian <input type="text" id="g3_1" class="gap-input" style="width: 260px;"> that accounting error on purpose.</p>
+      </div>
+
+      <div class="exercise-row">
+        <p>2. In spite of working twelve hours a day, she never felt exhausted. <strong>(EVEN)</strong></p>
+        <p style="margin-top: 6px;">She never felt exhausted, <input type="text" id="g3_2" class="gap-input" style="width: 260px;"> twelve hours a day.</p>
+      </div>
+
+      <div class="exercise-row">
+        <p>3. It is probable that the courier delivered the parcel to the wrong address. <strong>(MAY)</strong></p>
+        <p style="margin-top: 6px;">The courier <input type="text" id="g3_3" class="gap-input" style="width: 260px;"> the parcel to the wrong address.</p>
+      </div>
+
+      <div class="exercise-row">
+        <p>4. She started researching flow theory four years ago and continues to do so. <strong>(BEEN)</strong></p>
+        <p style="margin-top: 6px;">She <input type="text" id="g3_4" class="gap-input" style="width: 260px;"> flow theory for four years.</p>
+      </div>
+
+      <button class="btn-action" onclick="checkGrammar3()">Verify Transformations</button>
+      <span id="g3-res" class="result-tag"></span>
     </div>
 
-    <!-- 6. SPEAKING (EGE TASK 4) -->
-    <h2>6. Speaking: EGE Task 4</h2>
+    <!-- Grammar 4: Error Correction -->
     <div class="card">
-      <h3>Imagine you are doing a project "Finding Focus" with your friend.</h3>
-      <p class="instructions" style="margin-bottom: 20px;">You have found two photos for the project: <strong>Photo 1 shows a girl reading a book in a quiet park. Photo 2 shows teenagers playing a loud, active video game together in a dark room.</strong> Leave a voice message to your friend.</p>
-      
-      <p><strong>In your 3-minute voice message, you must:</strong></p>
-      <ul class="speaking-list">
-        <li>Briefly describe the photos, noting the differences (quiet solo activity vs. loud group activity).</li>
-        <li>Explain how these activities illustrate the project "Finding Focus".</li>
-        <li>State the advantages and disadvantages of both ways of achieving a flow state.</li>
-        <li>Express your opinion on the subject of the project: which way of focusing do you prefer and why?</li>
+      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 7: Proofreading (Identify & Correct the Glitch)</h3>
+      <p class="instructions">Identify the single grammatical or lexical mistake in each sentence and type the corrected word/phrase.</p>
+
+      <div class="exercise-row">
+        <p>1. "Despite of the intense noise outside, the surgeon remained focused." &rarr; <input type="text" id="g4_1" class="gap-input" style="width: 220px;" placeholder="Correction"></p>
+      </div>
+      <div class="exercise-row">
+        <p>2. "He has been knowing the lead psychologist since his undergraduate days." &rarr; <input type="text" id="g4_2" class="gap-input" style="width: 220px;" placeholder="Correction"></p>
+      </div>
+      <div class="exercise-row">
+        <p>3. "You mustn't have seen Eleanor yesterday because she was in Oxford." &rarr; <input type="text" id="g4_3" class="gap-input" style="width: 220px;" placeholder="Correction"></p>
+      </div>
+      <div class="exercise-row">
+        <p>4. "The unexpected delay made a great deal of trouble for our team." &rarr; <input type="text" id="g4_4" class="gap-input" style="width: 220px;" placeholder="Correction"></p>
+      </div>
+
+      <button class="btn-action" onclick="checkGrammar4()">Verify Proofreading</button>
+      <span id="g4-res" class="result-tag"></span>
+    </div>
+
+    <!-- 6. SPEAKING -->
+    <div class="section-title">6. Speaking Station: EGE Task 4 Adaptation</div>
+    <div class="card">
+      <p class="instructions">Imagine you and your peer are preparing a school project entitled <strong>"Optimal Focus: Solitude vs. Collaboration"</strong>. You have selected two photos to illustrate your ideas. Leave an articulate 3-minute voice message covering the required points.</p>
+
+      <div style="background: var(--accent-soft); border-radius: 10px; padding: 18px; margin: 15px 0;">
+        <p><strong>Photo 1:</strong> A young woman sitting alone in an austere library corner, completely engrossed in writing by hand in a notebook.</p>
+        <p style="margin-top: 8px;"><strong>Photo 2:</strong> A group of teenage software engineers animatedly brainstorming and writing code across several shared monitors in an open-plan office.</p>
+      </div>
+
+      <p><strong>Required Plan of Response:</strong></p>
+      <ul class="clean-list" style="margin-top: 10px;">
+        <li>Briefly explain the relevance of the illustrations to the project (highlight 2 prominent differences between solitary and collaborative concentration).</li>
+        <li>Outline 1–2 key advantages and disadvantages of both ways of achieving peak intellectual performance.</li>
+        <li>Express your personal perspective: which working environment allows you personally to enter a state of flow more easily, and why?</li>
       </ul>
-      
-      <div class="text-box" style="margin-top: 20px; background: #fbf9f5; border-color: #d1c8b8;">
-        <p><strong>Useful phrases to use:</strong></p>
-        <p>• "The first photo depicts... whereas the second one illustrates..."</p>
-        <p>• "The girl must be deeply immersed in her book, while the gamers seem to be..."</p>
-        <p>• "A clear advantage of the first activity is... However, a major drawback is..."</p>
+
+      <div style="margin-top: 18px; font-size: 0.92rem; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 12px;">
+        <strong>Recommended C1-Level Openers:</strong><br>
+        • <em>"The first image clearly exemplifies solitary reflection, whereas the second depicts..."</em><br>
+        • <em>"The protagonist in the library appears to be entirely immune to external distractions..."</em><br>
+        • <em>"While collaborative brainstorming can stimulate creativity, it might also cause cognitive overload..."</em>
       </div>
     </div>
 
   </div>
 
   <script>
-    // Vocab Ex 1
+    // Vocab 1 Checker
     function checkVocab1() {
       let score = 0;
-      if(document.getElementById('v1_1').value.trim().toLowerCase() === 'achieve') score++;
-      if(document.getElementById('v1_2').value.trim().toLowerCase() === 'carry out') score++;
-      if(document.getElementById('v1_3').value.trim().toLowerCase() === 'cause') score++;
-      if(document.getElementById('v1_4').value.trim().toLowerCase() === 'devote') score++;
+      if(document.getElementById('v1_1').value.trim().toLowerCase() === 'carry out') score++;
+      if(document.getElementById('v1_2').value.trim().toLowerCase() === 'cause') score++;
+      if(document.getElementById('v1_3').value.trim().toLowerCase() === 'devote') score++;
+      if(document.getElementById('v1_4').value.trim().toLowerCase() === 'achieve') score++;
       if(document.getElementById('v1_5').value.trim().toLowerCase() === 'make') score++;
-      let res = document.getElementById('v1-res');
-      res.textContent = score === 5 ? "✓ All correct!" : `${score}/5 correct. Check: achieve, carry out, cause, devote, make.`;
-      res.style.color = score === 5 ? "var(--correct)" : "var(--wrong)";
+
+      const res = document.getElementById('v1-res');
+      if(score === 5) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ All 5 collocations correct!";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/5 correct. Check: carry out, cause, devote, achieve, make.`;
+      }
     }
 
-    // Vocab Ex 2
+    // Vocab 2 Checker
     function checkVocab2() {
       let score = 0;
-      if(document.getElementById('v2_1').value.trim().toLowerCase() === 'impact') score++;
-      if(document.getElementById('v2_2').value.trim().toLowerCase() === 'awake') score++;
-      if(document.getElementById('v2_3').value.trim().toLowerCase() === 'time') score++;
-      if(document.getElementById('v2_4').value.trim().toLowerCase() === 'reward') score++;
-      let res = document.getElementById('v2-res');
-      res.textContent = score === 4 ? "✓ All correct!" : `${score}/4 correct.`;
-      res.style.color = score === 4 ? "var(--correct)" : "var(--wrong)";
+      if(document.getElementById('v2_1').value.trim().toLowerCase() === 'empirical') score++;
+      if(document.getElementById('v2_2').value.trim().toLowerCase() === 'diminishing') score++;
+      if(document.getElementById('v2_3').value.trim().toLowerCase() === 'threshold') score++;
+      if(document.getElementById('v2_4').value.trim().toLowerCase() === 'gratification') score++;
+      if(document.getElementById('v2_5').value.trim().toLowerCase() === 'equilibrium') score++;
+
+      const res = document.getElementById('v2-res');
+      if(score === 5) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ Superb! 5/5 correct contextual fits.";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/5 correct. Review word selections.`;
+      }
     }
 
-    // Vocab Ex 3
+    // Vocab 3 Checker
     function checkVocab3() {
       let score = 0;
-      if(document.getElementById('v3_1').value.trim().toLowerCase() === 'achievement') score++;
-      if(document.getElementById('v3_2').value.trim().toLowerCase() === 'unpredictable' || document.getElementById('v3_2').value.trim().toLowerCase() === 'predictable') score++;
-      if(document.getElementById('v3_3').value.trim().toLowerCase() === 'psychologist') score++;
-      let res = document.getElementById('v3-res');
-      res.textContent = score === 3 ? "✓ All correct!" : `${score}/3 correct. Check spelling!`;
-      res.style.color = score === 3 ? "var(--correct)" : "var(--wrong)";
+      if(document.getElementById('v3_1').value.trim().toLowerCase() === 'anxiety') score++;
+      if(document.getElementById('v3_2').value.trim().toLowerCase() === 'unexpected') score++;
+      if(document.getElementById('v3_3').value.trim().toLowerCase() === 'concentration') score++;
+      if(document.getElementById('v3_4').value.trim().toLowerCase() === 'irrelevant') score++;
+
+      const res = document.getElementById('v3-res');
+      if(score === 4) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ 4/4 Flawless word formation.";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/4 correct. Check spelling & prefixes.`;
+      }
     }
 
-    // Grammar Multi Choice
-    function checkMulti(btn, isCorrect) {
-      let parent = btn.parentElement;
-      let btns = parent.querySelectorAll('.opt-btn');
-      btns.forEach(b => { b.classList.remove('correct', 'wrong'); });
-      if(isCorrect) { btn.classList.add('correct'); } 
-      else { btn.classList.add('wrong'); }
+    // Grammar 1 Choice Evaluator
+    function evaluateChoice(btn, isCorrect, targetId) {
+      const container = btn.parentElement;
+      container.querySelectorAll('.opt-btn').forEach(b => {
+        b.classList.remove('active-correct', 'active-wrong');
+      });
+
+      const res = document.getElementById(targetId);
+      if(isCorrect) {
+        btn.classList.add('active-correct');
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ Correct deduction";
+      } else {
+        btn.classList.add('active-wrong');
+        res.style.color = "var(--wrong)";
+        res.textContent = "Reconsider logic";
+      }
     }
 
-    // Grammar Ex 2
+    // Grammar 2 Checker
     function checkGrammar2() {
       let score = 0;
-      let a1 = document.getElementById('g2_1').value.trim().toLowerCase();
-      let a2 = document.getElementById('g2_2').value.trim().toLowerCase();
-      let a3 = document.getElementById('g2_3').value.trim().toLowerCase();
-      if(a1 === 'despite' || a1 === 'in spite of') score++;
-      if(a2 === 'although' || a2 === 'even though') score++;
-      if(a3 === 'despite' || a3 === 'in spite of') score++;
-      let res = document.getElementById('g2-res');
-      res.textContent = score === 3 ? "✓ All correct!" : `${score}/3 correct.`;
-      res.style.color = score === 3 ? "var(--correct)" : "var(--wrong)";
+      const g1 = document.getElementById('g2_1').value.trim().toLowerCase();
+      const g2 = document.getElementById('g2_2').value.trim().toLowerCase();
+      const g3 = document.getElementById('g2_3').value.trim().toLowerCase();
+      const g4 = document.getElementById('g2_4').value.trim().toLowerCase();
+
+      if(g1 === 'despite' || g1 === 'in spite of') score++;
+      if(g2 === 'although' || g2 === 'even though' || g2 === 'whereas') score++;
+      if(g3 === 'although' || g3 === 'even though') score++;
+      if(g4 === 'whereas' || g4 === 'while') score++;
+
+      const res = document.getElementById('g2-res');
+      if(score === 4) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ All 4 linkers syntactically sound!";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/4 correct. Check clause vs. noun phrase structure.`;
+      }
     }
 
-    // Grammar Ex 3
+    // Grammar 3 Transformations
     function checkGrammar3() {
       let score = 0;
-      let a1 = document.getElementById('g3_1').value.trim().toLowerCase();
-      let a2 = document.getElementById('g3_2').value.trim().toLowerCase();
-      if(a1.includes("can't have left") || a1.includes("cannot have left")) score++;
-      if(a2.includes("despite the exam being") || a2.includes("despite it being")) score++;
-      let res = document.getElementById('g3-res');
-      res.textContent = score === 2 ? "✓ All correct!" : `${score}/2 correct. Hint: can't have left / despite the exam being`;
-      res.style.color = score === 2 ? "var(--correct)" : "var(--wrong)";
+      const t1 = document.getElementById('g3_1').value.trim().toLowerCase();
+      const t2 = document.getElementById('g3_2').value.trim().toLowerCase();
+      const t3 = document.getElementById('g3_3').value.trim().toLowerCase();
+      const t4 = document.getElementById('g3_4').value.trim().toLowerCase();
+
+      if(t1.includes("can't have committed") || t1.includes("cannot have committed")) score++;
+      if(t2.includes("even though she worked") || t2.includes("even though she was working")) score++;
+      if(t3.includes("may have delivered") || t3.includes("might have delivered")) score++;
+      if(t4.includes("has been researching")) score++;
+
+      const res = document.getElementById('g3-res');
+      if(score === 4) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ 4/4 Exam-level transformation accuracy!";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/4 correct. Review past modals and continuous forms.`;
+      }
     }
 
-    // Grammar Ex 4
+    // Grammar 4 Proofreading
     function checkGrammar4() {
       let score = 0;
-      let a1 = document.getElementById('g4_1').value.trim().toLowerCase();
-      let a2 = document.getElementById('g4_2').value.trim().toLowerCase();
-      let a3 = document.getElementById('g4_3').value.trim().toLowerCase();
-      if(a1.includes("must be")) score++;
-      if(a2.includes("despite the rain") || a2.includes("in spite of the rain")) score++;
-      if(a3.includes("can't have seen") || a3.includes("cannot have seen")) score++;
-      let res = document.getElementById('g4-res');
-      res.textContent = score === 3 ? "✓ All correct!" : `${score}/3 correct. Hint: must be / despite the rain / can't have seen.`;
-      res.style.color = score === 3 ? "var(--correct)" : "var(--wrong)";
+      const e1 = document.getElementById('g4_1').value.trim().toLowerCase();
+      const e2 = document.getElementById('g4_2').value.trim().toLowerCase();
+      const e3 = document.getElementById('g4_3').value.trim().toLowerCase();
+      const e4 = document.getElementById('g4_4').value.trim().toLowerCase();
+
+      if(e1 === 'despite' || e1 === 'in spite of' || e1.includes('despite the intense')) score++;
+      if(e2.includes('has known')) score++;
+      if(e3.includes("can't have seen") || e3.includes("cannot have seen")) score++;
+      if(e4.includes('caused') || e4.includes('caused a great deal')) score++;
+
+      const res = document.getElementById('g4-res');
+      if(score === 4) {
+        res.style.color = "var(--correct)";
+        res.textContent = "✓ 4/4 Glitches resolved perfectly!";
+      } else {
+        res.style.color = "var(--wrong)";
+        res.textContent = `${score}/4 correct. Clues: despite (no 'of') / know (stative) / can't have seen / caused trouble.`;
+      }
     }
   </script>
 </body>
-</html>s
+</html>
