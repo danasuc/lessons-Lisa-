@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2B: That’s Me in the Picture! (A2 Adult)</title>
+    <style>
+        :root {
+            --bg-color: #121826;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --correct: #22c55e;
+            --wrong: #ef4444;
+            --highlight: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .text-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .text-card p {
+            margin-bottom: 14px;
+        }
+
+        .text-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .task-title {
+            font-weight: 600;
+            color: var(--highlight);
+            margin-bottom: 12px;
+        }
+
+        .question-item {
+            margin-bottom: 14px;
+        }
+
+        input[type="text"] {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 140px;
+            transition: 0.2s border-color;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        input.correct {
+            border-color: var(--correct) !important;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        input.wrong {
+            border-color: var(--wrong) !important;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: 600;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+            margin-right: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        .rule-box {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .rule-box ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .rule-box li {
+            margin-bottom: 6px;
+        }
+
+        .speaking-card {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--highlight);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .speaking-card h4 {
+            color: var(--highlight);
+            margin-bottom: 8px;
+        }
+
+        .answers-block {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #38bdf8;
+            border: 1px dashed var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <span class="badge">English File Pre-Intermediate (A2)</span>
+        <h1>Unit 2B: That’s me in the picture!</h1>
+        <p class="subtitle">Focus: Past Continuous, Past Simple, Prepositions of Time & Place (at, in, on)</p>
+    </header>
+
+    <!-- 1. WARM-UP -->
+    <div class="section">
+        <h2 class="section-title">1. Warm-up: Photos & Memories</h2>
+        <div class="speaking-card">
+            <h4>Discussion with Tutor</h4>
+            <p>1. How often do you take photos with your smartphone? What do you usually photograph: people, food, nature, or documents?</p>
+            <p>2. Do you have a favourite photo of yourself? Where were you? What was happening at that moment?</p>
+            <p>3. Look at the famous photo by Henri Cartier-Bresson (1972, Paris):</p>
+            <ul style="padding-left: 20px; margin-top: 6px;">
+                <li>What time of year do you think it is?</li>
+                <li>What do you think the couple is looking at?</li>
+                <li>Why do you think the woman has her hand in her pocket?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 2. READING -->
+    <div class="section">
+        <h2 class="section-title">2. Reading: The Guardian "That's me in the picture"</h2>
+        
+        <div class="text-card">
+            <p><strong>The Guardian newspaper has a weekly feature called <em>That’s me in the picture</em>, where people describe famous photos they were in. This photo was sent in by Jane Rangeley.</strong></p>
+            <p>In 1972, I was living in London. I was in my early twenties, and I was working for an advertising agency. That summer, I went on a camping holiday with my parents in the south of France. One night, I went to a nightclub on the beach and I met a young Frenchman, and we fell in love. When I got home, I immediately started looking for a job in Paris. HeВот готовый автономный интерактивный HTML-урок по материалам **English File Pre-Intermediate (Урок 2B: That’s me in the picture!)**. 
+
+В урок включены: разминка с вопросами о фотографии и воспоминаниях, работа с оригинальной лексикой и предлогами времени/места (*at, in, on*), адаптированный текст с вопросами на понимание, интерактивный разбор грамматики **Past Continuous vs Past Simple** с мгновенной проверкой, упражнения на трансформацию и блок говорения для взрослой ученицы.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Lesson 2B: That's me in the picture!</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-inner: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --success: #4ade80;
+      --error: #f87171;
+      --border: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 860px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    header {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .section {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .section h2 {
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .text-block {
+      background: var(--card-inner);
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .text-block p {
+      margin-bottom: 12px;
+    }
+
+    .text-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .qa-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .qa-item strong {
+      color: #e2e8f0;
+    }
+
+    .grammar-rule {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed var(--accent);
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    .grammar-rule ul {
+      list-style-position: inside;
+      margin-top: 8px;
+      color: var(--text-muted);
+    }
+
+    .grammar-rule li {
+      margin-bottom: 4px;
+    }
+
+    .exercise-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .exercise-item {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--card-inner);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    .exercise-item input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .exercise-item input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+
+    .status-msg {
+      font-size: 0.85rem;
+      margin-left: 8px;
+      font-weight: 600;
+    }
+
+    .status-correct {
+      color: var(--success);
+    }
+
+    .status-wrong {
+      color: var(--error);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    button {
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+    }
+
+    button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: var(--card-inner);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .toggle-content {
+      background: #111827;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .speaking-card {
+      background: var(--card-inner);
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .speaking-card h3 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .speaking-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <span class="badge">A2 / Pre-Intermediate • Unit 2B</span>
+      <h1>That's me in the picture!</h1>
+      <p class="subtitle">Memories, Photographs, Prepositions (at / in / on) & Past Continuous</p>
+    </header>
+
+    <!-- 1. WARM-UP -->
+    <section class="section">
+      <h2>1. Warm-Up: Photos & Memories</h2>
+      <div class="qa-item">
+        <strong>1.</strong> Do you prefer taking photos of places and landscapes or taking pictures of people and friends?
+      </div>
+      <div class="qa-item">
+        <strong>2.</strong> How often do you look through old photos on your phone or in printed albums?
+      </div>
+      <div class="qa-item">
+        <strong>3.</strong> Do you have a favorite photo of yourself from your childhood or youth? What was happening in that picture?
+      </div>
+    </section>
+
+    <!-- 2. READING -->
+    <section class="section">
+      <h2>2. Reading: The Story Behind the Photo</h2>
+      <div class="text-block">
+        <p>In 1972, Jane Rangely was in her early twenties, living and working in London for an advertising agency. That summer, while on holiday with her parents in the south of France, she met a young Frenchman named Christian in a nightclub. They fell in love immediately. When Jane returned to London, she decided to find a job in Paris. She found work as a bilingual secretary, and Christian was studying medicine at university.</p>
+        <p>On Sundays, they frequently went for walks around Paris. One autumn day, while walking in the botanical gardens, they paused because a noise came from a tree. A small bird was attacking an owl. While they were looking up, Jane noticed a man with a camera taking photographs of them.</p>
+        <p>A year later, a friend in London recognized Jane in a published photography magazine. The photographer was Henri Cartier-Bresson, one of the most famous photographers in history. Jane contacted him, and he generously sent her a signed copy of the photograph. It captured a peaceful, romantic period of her youth that she still remembers warmly.</p>
+      </div>
+
+      <div class="qa-item">
+        <strong>Comprehension Questions:</strong>
+        <ol style="margin-left: 20px; margin-top: 8px;">
+          <li>Where was Jane living and working before moving to Paris?</li>
+          <li>What were Jane and Christian doing when the photo was taken?</li>
+          <li>Why did they stop walking in the botanical gardens?</li>
+          <li>How did Jane find out that Henri Cartier-Bresson had taken their photo?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3. PREPOSITIONS OF TIME & PLACE -->
+    <section class="section">
+      <h2>3. Vocabulary: Prepositions (at, in, on)</h2>
+      <div class="grammar-rule">
+        <strong>Rule of thumb:</strong>
+        <ul>
+          <li><strong>IN:</strong> Years, months, seasons, cities, countries, enclosed spaces (in 1972, in Paris, in the garden).</li>
+          <li><strong>ON:</strong> Days of the week, dates, islands, surfaces, public transport (on Sunday, on the beach, on the bus).</li>
+          <li><strong>AT:</strong> Specific points, clock times, buildings/events (at 7:00, at university, at a party, at work).</li>
+        </ul>
+      </div>
+
+      <div class="exercise-box" id="ex-prepositions">
+        <div class="exercise-item">
+          1. Jane met Christian <input type="text" data-ans="in" style="width: 70px;"> the south of France.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          2. They often went for romantic walks <input type="text" data-ans="on" style="width: 70px;"> Sundays.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          3. Christian was studying medicine <input type="text" data-ans="at" style="width: 70px;"> university.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          4. She was living <input type="text" data-ans="in" style="width: 70px;"> London when she got the letter.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          5. They were standing <input type="text" data-ans="in" style="width: 70px;"> the botanical gardens.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          6. Cartier-Bresson was waiting <input type="text" data-ans="at" style="width: 70px;"> the corner with his camera.
+          <span class="status-msg"></span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button onclick="checkAnswers('ex-prepositions')">Check Answers</button>
+        <button class="secondary" onclick="resetAnswers('ex-prepositions')">Reset</button>
+      </div>
+    </section>
+
+    <!-- 4. GRAMMAR: PAST CONTINUOUS VS PAST SIMPLE -->
+    <section class="section">
+      <h2>4. Grammar: Past Continuous vs Past Simple</h2>
+      <div class="grammar-rule">
+        <strong>Form:</strong> was / were + verb-ing (I was working / They were walking).
+        <ul>
+          <li><strong>Past Continuous:</strong> Describes a longer background action in progress in the past.</li>
+          <li><strong>Past Simple:</strong> Describes a shorter, completed action that interrupted the background action.</li>
+          <li><em>Example:</em> We <strong>were walking</strong> in the park when it <strong>started</strong> to rain.</li>
+        </ul>
+      </div>
+
+      <div class="exercise-box" id="ex-grammar">
+        <div class="exercise-item">
+          1. While Jane and Christian (walk) <input type="text" data-ans="were walking" style="width: 140px;">, they heard a noise.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          2. The photographer took a picture while they (look) <input type="text" data-ans="were looking" style="width: 140px;"> at the birds.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          3. It (rain) <input type="text" data-ans="was raining" style="width: 140px;"> when I left the house this morning.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          4. I was reading a magazine when my phone suddenly (ring) <input type="text" data-ans="rang" style="width: 100px;">.
+          <span class="status-msg"></span>
+        </div>
+        <div class="exercise-item">
+          5. What (you / do) <input type="text" data-ans="were you doing" style="width: 150px;"> when you saw the accident?
+          <span class="status-msg"></span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button onclick="checkAnswers('ex-grammar')">Check Answers</button>
+        <button class="secondary" onclick="resetAnswers('ex-grammar')">Reset</button>
+      </div>
+    </section>
+
+    <!-- 5. SPEAKING -->
+    <section class="section">
+      <h2>5. Speaking Task: Describe a Photo</h2>
+      <div class="speaking-card">
+        <h3>Task: Describe a memorable photo from your gallery</h3>
+        <p>Pick any photo on your smartphone (a vacation, a family dinner, an accidental snapshot) and answer these prompts:</p>
+        <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-muted); font-size: 0.95rem;">
+          <li>When and where was the photo taken?</li>
+          <li>Who took the photo?</li>
+          <li>What were you doing at that exact moment?</li>
+          <li>What was the weather or atmosphere like?</li>
+          <li>Why is this picture meaningful or funny to you?</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function checkAnswers(containerId) {
+      const container = document.getElementById(containerId);
+      const items = container.querySelectorAll('.exercise-item');
+
+      items.forEach(item => {
+        const input = item.querySelector('input');
+        const status = item.querySelector('.status-msg');
+        const expected = input.getAttribute('data-ans').trim().toLowerCase();
+        const actual = input.value.trim().toLowerCase();
+
+        if (actual === expected) {
+          status.textContent = "✓ Correct";
+          status.className = "status-msg status-correct";
+          input.style.borderColor = "var(--success)";
+        } else {
+          status.textContent = `✗ Expected: ${input.getAttribute('data-ans')}`;
+          status.className = "status-msg status-wrong";
+          input.style.borderColor = "var(--error)";
+        }
+      });
+    }
+
+    function resetAnswers(containerId) {
+      const container = document.getElementById(containerId);
+      const items = container.querySelectorAll('.exercise-item');
+
+      items.forEach(item => {
+        const input = item.querySelector('input');
+        const status = item.querySelector('.status-msg');
+        input.value = "";
+        input.style.borderColor = "var(--border)";
+        status.textContent = "";
+        status.className = "status-msg";
+      });
+    }
+  </script>
+
+</body>
+</html>
