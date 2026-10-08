@@ -3,952 +3,699 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 9: Secrets of the Mind</title>
+  <title>House space — Complete Lesson</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #FAF8F5;
-      --card: #FFFFFF;
-      --border: #E8E3DA;
-      --border-focus: #8E7058;
-      --text: #2C2824;
-      --text-muted: #7E766B;
-      --accent: #8E7058;
-      --accent-soft: #F2ECE3;
-      --correct: #4D6B4A;
-      --correct-bg: #EEF4ED;
-      --wrong: #9A4B45;
-      --wrong-bg: #F8EFEF;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      line-height: 1.7;
-      padding: 50px 20px;
-    }
-
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    header {
-      margin-bottom: 40px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .topic-tag {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.35rem;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      margin: 42px 0 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-title::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    .quote-box {
-      background: var(--accent-soft);
-      border-left: 3px solid var(--accent);
-      padding: 18px 22px;
-      border-radius: 8px;
-      color: #3B352F;
-      margin-bottom: 18px;
-      font-size: 0.95rem;
-    }
-
-    .reading-passage p {
-      margin-bottom: 18px;
-      text-align: justify;
-      color: #332F2B;
-    }
-
-    .reading-passage p:last-child { margin-bottom: 0; }
-
-    .instructions {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      font-style: italic;
-    }
-
-    .exercise-row {
-      padding: 14px 0;
-      border-bottom: 1px dashed var(--border);
-    }
-
-    .exercise-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .gap-input {
-      border: 1px solid var(--border);
-      background: var(--bg);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      color: var(--text);
-      outline: none;
-      transition: all 0.2s;
-    }
-
-    .gap-input:focus {
-      border-color: var(--border-focus);
-      background: #FFFFFF;
-    }
-
-    .options-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .opt-btn {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.88rem;
-      color: var(--text);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .opt-btn:hover {
-      border-color: var(--accent);
-      background: #FFFFFF;
-    }
-
-    .opt-btn.active-correct {
-      background: var(--correct-bg);
-      border-color: var(--correct);
-      color: var(--correct);
-      font-weight: 500;
-    }
-
-    .opt-btn.active-wrong {
-      background: var(--wrong-bg);
-      border-color: var(--wrong);
-      color: var(--wrong);
-      font-weight: 500;
-    }
-
-    .btn-action {
-      margin-top: 15px;
-      background: var(--accent);
-      color: #FFFFFF;
-      border: none;
-      padding: 9px 22px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .btn-action:hover { opacity: 0.9; }
-
-    .result-tag {
-      display: inline-block;
-      margin-left: 12px;
-      font-size: 0.88rem;
-      font-weight: 500;
-    }
-
-    .vocab-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    .vocab-table tr {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .vocab-table tr:last-child {
-      border-bottom: none;
-    }
-
-    .vocab-table td {
-      padding: 10px 8px;
-      vertical-align: top;
-    }
-
-    .vocab-word {
-      font-weight: 600;
-      width: 42%;
-      color: var(--text);
-    }
-
-    .vocab-trans {
-      color: var(--text-muted);
-    }
-
-    .vocab-trans.hidden {
-      filter: blur(5px);
-      user-select: none;
-    }
-
-    ul.clean-list {
-      margin-left: 20px;
-      color: var(--text);
-    }
-
-    ul.clean-list li { margin-bottom: 10px; }
-
-    .speaking-photos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin: 18px 0;
-    }
-
-    .photo-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-    }
-
-    .photo-tag {
-      font-weight: 600;
-      color: var(--accent);
-      font-size: 0.88rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    @media (max-width: 700px) {
-      body { padding: 25px 15px; }
-      h1 { font-size: 1.85rem; }
-      .speaking-photos { grid-template-columns: 1fr; }
-    }
+    body { font-family: 'Inter', sans-serif; background-color: #0b1120; color: #f1f5f9; }
+    .card-3d { perspective: 1000px; }
+    .card-3d-inner { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+    .card-3d.flipped .card-3d-inner { transform: rotateY(180deg); }
+    .card-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .card-back { transform: rotateY(180deg); }
+    input, textarea, select { accent-color: #38bdf8; }
   </style>
 </head>
-<body>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 selection:bg-sky-500 selection:text-white">
 
-  <div class="container">
-    
-    <header>
-      <div class="topic-tag">Unit 9 &bull; Advanced English &bull; EGE</div>
-      <h1>Secrets of the Mind: Flow & Concentration</h1>
-      <div class="subtitle">Focus, happiness research, dependent collocations, modals, and speaking</div>
+  <div class="max-w-4xl mx-auto space-y-8">
+
+    <!-- HEADER / BANNER -->
+    <header class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/90 border border-slate-800 p-8 text-center space-y-3 shadow-xl">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase text-sky-400 bg-sky-950/60 border border-sky-800/80">
+        Complete First · Unit 13
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">House space</h1>
+      <p class="text-sm sm:text-base text-slate-400 max-w-xl mx-auto font-medium">
+        Living arrangements, spatial vocabulary, causative constructions, and communicative practice
+      </p>
+
+      <!-- PROGRESS BAR -->
+      <div class="pt-4 max-w-md mx-auto">
+        <div class="flex justify-between items-center text-xs font-semibold text-slate-400 mb-2">
+          <span>Lesson Progress</span>
+          <span id="prog-pct" class="text-sky-400 font-mono font-bold">0%</span>
+        </div>
+        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700/60">
+          <div id="prog-bar" class="bg-gradient-to-r from-sky-500 to-indigo-500 h-full w-0 transition-all duration-300"></div>
+        </div>
+      </div>
     </header>
 
-    <!-- 1. WARM-UP -->
-    <div class="section-title">1. Warm-up</div>
-    <div class="card">
-      <div class="quote-box">
-        "Most people spend their working week waiting for the weekend, yet when it arrives, they often feel bored, irritable, or lost."
+    <!-- ================= 1. WARM-UP ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3">
+        <h2 class="text-xl font-bold text-sky-400 flex items-center gap-2">
+          <span>1. Warm-Up</span>
+        </h2>
       </div>
-      <p class="instructions">Discuss these questions:</p>
-      <ul class="clean-list">
-        <li>Why do people often feel tired after passive rest (scrolling social media, watching series), while demanding hobbies make them feel energized?</li>
-        <li>Think of an activity where you lose track of time completely. What keeps you so focused?</li>
-        <li>Do you agree that real satisfaction is impossible without effort and overcoming challenges?</li>
-      </ul>
-    </div>
 
-    <!-- 2. VOCABULARY -->
-    <div class="section-title">2. Vocabulary</div>
-    <div class="card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <p class="instructions" style="margin-bottom: 0;">Target words and collocations:</p>
-        <button class="opt-btn" onclick="toggleTranslations()" id="toggle-btn">Hide Russian Translations</button>
+      <!-- Exercise 1.1 -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 1.1: Personal Living Choices</h3>
+        <p class="text-xs text-slate-400">Answer the questions with your tutor or write your thoughts below:</p>
+        <ul class="text-xs sm:text-sm text-slate-300 space-y-1.5 list-disc list-inside">
+          <li>Which type of place would you prefer for a one-year stay: a mountain chalet, a high-rise flat, or a suburban house?</li>
+          <li>Which three factors matter most to you: quiet surroundings, good public transport, a garden, or shops within walking distance?</li>
+        </ul>
+        <textarea id="wu_1" class="sav w-full p-3.5 rounded-lg bg-slate-950 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-sky-500 transition" rows="3" placeholder="Notes / Your opinion..."></textarea>
       </div>
-      <table class="vocab-table">
-        <tr>
-          <td class="vocab-word">devote life / time to (+ V-ing)</td>
-          <td class="vocab-trans">посвящать жизнь / время чему-либо (с герундием)</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">carry out research / an experiment</td>
-          <td class="vocab-trans">проводить исследование / опыт</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">achieve an ambition / success</td>
-          <td class="vocab-trans">достигать цели, осуществлять амбицию</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">cause problems / trouble</td>
-          <td class="vocab-trans">вызывать проблемы, приводить к неприятностям</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">have an impact / effect on</td>
-          <td class="vocab-trans">оказывать влияние на что-либо</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">make an impression on</td>
-          <td class="vocab-trans">производить впечатление на кого-либо</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">pass time vs. spend time</td>
-          <td class="vocab-trans">убивать время от скуки vs. осмысленно проводить время</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">stay awake</td>
-          <td class="vocab-trans">бодрствовать, не спать</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">empirical evidence</td>
-          <td class="vocab-trans">эмпирические данные, проверенные факты</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">intrinsic motivation</td>
-          <td class="vocab-trans">внутренняя мотивация (интерес к самому процессу)</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">income threshold</td>
-          <td class="vocab-trans">порог дохода</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">diminishing returns</td>
-          <td class="vocab-trans">убывающая отдача</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">emotional equilibrium</td>
-          <td class="vocab-trans">душевное равновесие, баланс</td>
-        </tr>
-        <tr>
-          <td class="vocab-word">deprivation</td>
-          <td class="vocab-trans">лишение базовых благ, депривация</td>
-        </tr>
-      </table>
-    </div>
 
-    <!-- 3. READING -->
-    <div class="section-title">3. Reading: The State of Flow</div>
-    <div class="card reading-passage">
-      <p><strong>1.</strong> For decades, sociologists assumed that happiness came from external success: money, social status, and a life free from hard manual work. However, mid-twentieth-century observations by psychologist Mihaly Csikszentmihalyi challenged this view. Having witnessed the poverty and chaos of post-war Europe as a boy, he was struck by how many wealthy people appeared constantly anxious, while artists and craftsmen often seemed calm and satisfied despite modest living conditions. This led him to devote his career to studying what actually makes everyday life fulfilling.</p>
-
-      <p><strong>2.</strong> To avoid relying on surveys done after the fact — which are often distorted by bad memory — Csikszentmihalyi invented the "experience sampling method." Thousands of participants carried pagers for a week. Whenever the pager beeped at random times during the day, subjects stopped immediately to write down what they were doing, who they were with, and how well they were concentrating. This gave researchers objective, real-time data about everyday feelings and focus.</p>
-
-      <p><strong>3.</strong> The results went against common assumptions about rest. People reported their lowest mood and energy during unstructured free time, like sitting around or watching television. In contrast, they felt best during intense, goal-oriented concentration. Csikszentmihalyi called this state "flow" — a condition where attention is so focused that people lose track of time, forget their worries, and enjoy the activity for its own sake.</p>
-
-      <p><strong>4.</strong> According to flow theory, this mental state requires a balance between challenge and skill. If a task is too hard, people feel stressed and discouraged. If it is too simple, they get bored quickly. Flow happens right on the edge where a person's skills are stretched to their limit. Whether someone is playing a complex piece on the piano, performing surgery, or working through a difficult text, the mental process is the same.</p>
-
-      <p><strong>5.</strong> The conclusions of this research are especially relevant today. While money removes serious hardship up to a basic threshold, accumulating more and more wealth brings diminishing returns. Lasting satisfaction cannot be bought or gained passively; it has to be built through focused attention, clear goals, and taking on challenges that help you grow.</p>
-    </div>
-
-    <!-- 4. READING TASKS -->
-    <div class="section-title">4. Reading Tasks</div>
-    <div class="card">
-      <p class="instructions">Choose the correct answer based on the text:</p>
-
-      <div class="exercise-row">
-        <p>1. What first motivated Csikszentmihalyi to study happiness?</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc1', 'rc_1')">A desire to help wealthy people make sound investments</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'rc1', 'rc_1')">Observing that affluent individuals were often deeply discontented</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc1', 'rc_1')">A childhood ambition to work as an independent craftsman</button>
+      <!-- Exercise 1.2 -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 1.2: Picture Analysis & Prediction</h3>
+        <p class="text-xs text-slate-400">Look at the contrast between living in historical Venice and living in a modern houseboat:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-lg overflow-hidden border border-slate-700 bg-slate-950 p-3 space-y-2">
+            <span class="text-xs font-bold text-sky-400">Option A: Historic Canal House (Venice)</span>
+            <p class="text-xs text-slate-400">Ground floor used as a damp warehouse, boat entrance, stone arched windows, noise of gondolas at night.</p>
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-700 bg-slate-950 p-3 space-y-2">
+            <span class="text-xs font-bold text-indigo-400">Option B: River Houseboat</span>
+            <p class="text-xs text-slate-400">20 metres long, compact rooms, rocking in windy storms, no garden, but beautiful water view.</p>
+          </div>
         </div>
-        <span id="rc1" class="result-tag"></span>
+        <label class="block text-xs font-semibold text-slate-300">What would be the most difficult everyday challenge in each place?</label>
+        <textarea id="wu_2" class="sav w-full p-3.5 rounded-lg bg-slate-950 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-sky-500 transition" rows="2" placeholder="Write your comparison..."></textarea>
+      </div>
+    </section>
+
+    <!-- ================= 2. VOCABULARY ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">2. Vocabulary</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Housing & Space</span>
       </div>
 
-      <div class="exercise-row">
-        <p>2. Why was the "experience sampling method" better than standard surveys?</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'rc2', 'rc_2')">It captured real-time psychological data, bypassing memory bias</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc2', 'rc_2')">It allowed participants to answer only when they felt relaxed</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc2', 'rc_2')">It focused only on creative artists and professional athletes</button>
+      <!-- Flashcards Trainer Block -->
+      <div class="rounded-xl bg-slate-800/40 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex justify-between items-center text-xs font-semibold">
+          <span class="text-slate-300 uppercase tracking-wider">Interactive Vocabulary Flashcards</span>
+          <span id="fc-stat" class="font-mono text-sky-400">Card 1 / 10</span>
         </div>
-        <span id="rc2" class="result-tag"></span>
-      </div>
 
-      <div class="exercise-row">
-        <p>3. According to the fourth paragraph, flow happens when:</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc3', 'rc_3')">A task is simple enough to avoid mental strain</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc3', 'rc_3')">Financial rewards are guaranteed in advance</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'rc3', 'rc_3')">Personal capabilities are fully tested by a demanding challenge</button>
+        <div class="max-w-md mx-auto">
+          <div id="fc-box" class="card-3d w-full h-48 cursor-pointer select-none" onclick="toggleCard()">
+            <div class="card-3d-inner relative w-full h-full rounded-xl border border-slate-700 bg-slate-950 p-6 flex flex-col justify-center items-center text-center shadow-lg">
+              <div class="card-face absolute inset-0 p-6 flex flex-col items-center justify-center">
+                <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Target Term</span>
+                <p id="fc-word" class="text-2xl font-extrabold text-white"></p>
+                <p id="fc-transc" class="text-xs font-mono text-slate-400 mt-1"></p>
+                <span class="text-[11px] text-slate-500 mt-4">Click to flip card ↺</span>
+              </div>
+              <div class="card-face card-back absolute inset-0 p-6 flex flex-col items-center justify-center bg-slate-900 rounded-xl">
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">Translation & Meaning</span>
+                <p id="fc-trans" class="text-lg font-bold text-slate-100"></p>
+                <p id="fc-colloc" class="text-xs text-slate-400 mt-2 italic text-center"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center mt-4">
+            <button onclick="prevCard()" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition">← Prev</button>
+            <div class="space-x-2">
+              <button onclick="markCard(false)" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-950/60 border border-amber-800 text-amber-300 hover:bg-amber-900/60 transition">Still Learning</button>
+              <button onclick="markCard(true)" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-emerald-950/60 border border-emerald-800 text-emerald-300 hover:bg-emerald-900/60 transition">Mastered ✓</button>
+            </div>
+            <button onclick="nextCard()" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Next →</button>
+          </div>
         </div>
-        <span id="rc3" class="result-tag"></span>
       </div>
 
-      <div class="exercise-row">
-        <p>4. What does the text say about money and happiness in the final paragraph?</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc4', 'rc_4')">Income has zero impact on human well-being</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'rc4', 'rc_4')">Money helps up to a point, after which additional wealth matters less</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'rc4', 'rc_4')">Wealthy people are systematically unhappier than poor people</button>
+      <!-- Vocab Table -->
+      <div class="overflow-x-auto rounded-xl border border-slate-800">
+        <table class="w-full text-left text-xs sm:text-sm text-slate-300">
+          <thead class="bg-slate-950 text-slate-400 text-xs uppercase font-bold border-b border-slate-800">
+            <tr>
+              <th class="p-3">Word / Phrase</th>
+              <th class="p-3">Transcription</th>
+              <th class="p-3">Russian Translation</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/80 font-sans">
+            <tr><td class="p-3 font-semibold text-white">housing estate</td><td class="p-3 font-mono text-slate-400">/ˈhaʊ.zɪŋ ɪˌsteɪt/</td><td class="p-3">жилой массив / микрорайон</td></tr>
+            <tr><td class="p-3 font-semibold text-white">within walking distance</td><td class="p-3 font-mono text-slate-400">/wɪˈðɪn ˈwɔː.kɪŋ ˈdɪs.təns/</td><td class="p-3">в пешей доступности</td></tr>
+            <tr><td class="p-3 font-semibold text-white">personal space</td><td class="p-3 font-mono text-slate-400">/ˈpɜː.sən.əl speɪs/</td><td class="p-3">личное пространство</td></tr>
+            <tr><td class="p-3 font-semibold text-white">ample room</td><td class="p-3 font-mono text-slate-400">/ˈæm.pəl ruːm/</td><td class="p-3">достаточно места / простор</td></tr>
+            <tr><td class="p-3 font-semibold text-white">parking space</td><td class="p-3 font-mono text-slate-400">/ˈpɑː.kɪŋ speɪs/</td><td class="p-3">место для парковки</td></tr>
+            <tr><td class="p-3 font-semibold text-white">prime location</td><td class="p-3 font-mono text-slate-400">/praɪm ləʊˈkeɪ.ʃən/</td><td class="p-3">выгодное расположение</td></tr>
+            <tr><td class="p-3 font-semibold text-white">market square</td><td class="p-3 font-mono text-slate-400">/ˈmɑː.kɪt skweər/</td><td class="p-3">рыночная площадь</td></tr>
+            <tr><td class="p-3 font-semibold text-white">residential area</td><td class="p-3 font-mono text-slate-400">/ˌrez.ɪˈden.ʃəl ˈeə.ri.ə/</td><td class="p-3">жилой / спальный район</td></tr>
+            <tr><td class="p-3 font-semibold text-white">spacious</td><td class="p-3 font-mono text-slate-400">/ˈspeɪ.ʃəs/</td><td class="p-3">просторный, вместительный</td></tr>
+            <tr><td class="p-3 font-semibold text-white">cramped</td><td class="p-3 font-mono text-slate-400">/kræmpt/</td><td class="p-3">тесный, загроможденный</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercise 2.1: Confusable Nouns -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.1: Space, Place, Room, Area, or Location?</h3>
+          <button onclick="checkVocab1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
         </div>
-        <span id="rc4" class="result-tag"></span>
+        <div class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+          <p>1. The flat is small, but there is enough 
+            <select id="v_ex1_1" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="room">room</option><option value="space">space</option><option value="place">place</option>
+            </select> for all the things I am bringing.</p>
+          <p>2. We converted the old garage into a studio, but now we have no parking 
+            <select id="v_ex1_2" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="space">space</option><option value="area">area</option><option value="location">location</option>
+            </select>.</p>
+          <p>3. Venice is a strange and beautiful 
+            <select id="v_ex1_3" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="place">place</option><option value="area">area</option><option value="space">space</option>
+            </select> to live in.</p>
+          <p>4. The animals in this reserve have a huge 
+            <select id="v_ex1_4" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="area">area</option><option value="room">room</option><option value="location">location</option>
+            </select> to move around.</p>
+        </div>
+        <div id="v_ex1_fb" class="text-xs font-bold pt-1"></div>
       </div>
 
-      <div style="margin-top: 22px; padding-top: 15px; border-top: 1px dashed var(--border);">
-        <p class="instructions">Discussion:</p>
-        <ul class="clean-list">
-          <li>Why do people think having endless free time will make them happy, even though data shows passive downtime leads to low mood?</li>
-          <li>Can school study or exam preparation bring a flow state, or does stress make that impossible?</li>
+      <!-- Exercise 2.2: Word Formation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.2: Word Formation (25–29 format)</h3>
+          <button onclick="checkVocab2()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>Urban areas face an acute housing <input id="wf_1" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer">.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">SHORT</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>It is a quiet <input id="wf_2" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> district away from the city centre.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">RESIDE</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>The living room is exceptionally <input id="wf_3" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> and airy.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">SPACE</span>
+          </div>
+        </div>
+        <div id="v_ex2_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 2.3: Multiple Choice -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.3: Prepositions & Collocations (30–36 format)</h3>
+          <button onclick="checkVocab3()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="p-3 rounded bg-slate-950 border border-slate-800 space-y-1.5">
+            <p>1. The cottage is situated ______ walking distance of public transport.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="1" class="sav-r"><span>1) on</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="2" class="sav-r"><span>2) within</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="3" class="sav-r"><span>3) by</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="4" class="sav-r"><span>4) at</span></label>
+            </div>
+          </div>
+          <div class="p-3 rounded bg-slate-950 border border-slate-800 space-y-1.5">
+            <p>2. We decided to relocate to the ______ of town to have more fresh air.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="1" class="sav-r"><span>1) outskirts</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="2" class="sav-r"><span>2) edges</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="3" class="sav-r"><span>3) borders</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="4" class="sav-r"><span>4) boundaries</span></label>
+            </div>
+          </div>
+        </div>
+        <div id="v_ex3_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+    </section>
+
+    <!-- ================= 3. READING ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">3. Reading Comprehension</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Historical Venice (1733)</span>
+      </div>
+
+      <!-- Text -->
+      <div class="rounded-xl bg-slate-950 border border-slate-800 p-5 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">My New Home in Venice, 1733</h4>
+        <p>
+          Uncle Leo gives me a suspicious look when I call this place the 'Scacchi Palace'. It is really a house, although elsewhere in the world this would easily be regarded as a palace, even if it is in need of a little care and attention. Our house is by the side of the Rio San Cassian canal and a small square. We have a door which leads onto the street and two entrances from the water. One runs under a grand rounded arch into the ground floor of the house, which, as is customary in Venice, is used instead of a cellar for storing goods.
+        </p>
+        <p>
+          There is yet another exit: a wooden bridge with handrails runs from the first floor of the house straight over the canal and into the square itself. Consequently I can wander over it in the morning and find fresh water from the well in the centre of the square while still rubbing the sleep from my eyes. Or I can hail a gondola from my bedroom window! The house is almost 300 years old, built of dark brown bricks and with elegant arched windows. When I lie in bed at night, I hear the passing gondoliers singing in the square.
+        </p>
+      </div>
+
+      <!-- Exercise 3.1: True / False / Not Stated -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 3.1: Text Evaluation (T / F / NS)</h3>
+          <button onclick="checkReading1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>1. Uncle Leo's house is in perfect physical condition.</span>
+            <select id="r_tf_1" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>2. The ground floor is occupied by bedrooms for servants.</span>
+            <select id="r_tf_2" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>3. The bridge allows the writer to enter the square without going outside onto street level.</span>
+            <select id="r_tf_3" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+        </div>
+        <div id="r_ex1_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 3.2: Short Questions -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 3.2: Questions to the Text</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">1. Why does Uncle Leo react suspiciously to the name 'Scacchi Palace'?</label>
+            <input id="r_q1" type="text" class="sav w-full p-2.5 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" placeholder="He thinks it is just an ordinary house that needs repairs...">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">2. What sounds does the narrator hear when trying to sleep at night?</label>
+            <input id="r_q2" type="text" class="sav w-full p-2.5 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" placeholder="The songs and chatter of passing gondoliers...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. GRAMMAR ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">4. Grammar Section</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Causative Have / Get</span>
+      </div>
+
+      <!-- Theory Box -->
+      <div class="rounded-xl bg-slate-950 border-l-4 border-sky-500 p-5 space-y-2 text-xs sm:text-sm text-slate-300">
+        <h3 class="font-bold text-white uppercase text-xs tracking-wider">Theory: Causative have and get</h3>
+        <p><strong>Form:</strong> <code class="font-mono text-sky-300">have / get + object + past participle (V3)</code></p>
+        <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs">
+          <li><strong>Meaning:</strong> We use this structure when we arrange for someone else (usually a professional) to do something for us.</li>
+          <li><em>She had the old garage turned into a study.</em> (A builder did the work, not her).</li>
+          <li><em>I am getting my roof repaired tomorrow.</em> (Roofers will repair it).</li>
+          <li><strong>Adverse events:</strong> <em>He had his bag stolen on the train.</em> (Something unpleasant happened to him).</li>
         </ul>
       </div>
-    </div>
 
-    <!-- 5. VOCABULARY PRACTICE -->
-    <div class="section-title">5. Vocabulary Practice</div>
-
-    <!-- Task 1: Collocations -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 1: Collocations (devote / carry out / cause / make / achieve)</h3>
-      <p class="instructions">Fill in the verbs in the correct form:</p>
-
-      <div class="exercise-row">
-        <p>1. The university faculty managed to <input type="text" id="v1_1" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> research on student focus.</p>
-      </div>
-      <div class="exercise-row">
-        <p>2. Constantly switching apps will <input type="text" id="v1_2" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> problems for your concentration.</p>
-      </div>
-      <div class="exercise-row">
-        <p>3. She decided to <input type="text" id="v1_3" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> her career to working with teenagers.</p>
-      </div>
-      <div class="exercise-row">
-        <p>4. After years of deliberate practice, he finally <input type="text" id="v1_4" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> his ambition.</p>
-      </div>
-      <div class="exercise-row">
-        <p>5. The speaker failed to <input type="text" id="v1_5" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> an impression on the students.</p>
-      </div>
-      <div class="exercise-row">
-        <p>6. His reckless actions <input type="text" id="v1_6" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> a lot of trouble for the entire team last week.</p>
-      </div>
-      <div class="exercise-row">
-        <p>7. We need to <input type="text" id="v1_7" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> an experiment before we publish the results.</p>
-      </div>
-      <div class="exercise-row">
-        <p>8. Did she manage to <input type="text" id="v1_8" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> all her academic goals this term?</p>
-      </div>
-
-      <button class="btn-action" onclick="checkVocab1()">Check Collocations</button>
-      <span id="v1-res" class="result-tag"></span>
-    </div>
-
-    <!-- Task 2: Advanced Words -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 2: Context Fill</h3>
-      <p class="instructions">Fill in: <em>diminishing, threshold, equilibrium, empirical, intrinsic, awake, pass, spent</em>.</p>
-
-      <div class="exercise-row">
-        <p>1. The psychologist demanded <input type="text" id="v2_1" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> evidence before publishing the theory.</p>
-      </div>
-      <div class="exercise-row">
-        <p>2. True passion comes from <input type="text" id="v2_2" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> interest, not outside praise.</p>
-      </div>
-      <div class="exercise-row">
-        <p>3. Once your income crosses a basic <input type="text" id="v2_3" class="gap-input" style="width: 150px;" oninput="saveInput(this)">, more money changes very little.</p>
-      </div>
-      <div class="exercise-row">
-        <p>4. Working twelve hours without breaks brings <input type="text" id="v2_4" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> returns in productivity.</p>
-      </div>
-      <div class="exercise-row">
-        <p>5. A quiet walk helped her recover her emotional <input type="text" id="v2_5" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> after exams.</p>
-      </div>
-      <div class="exercise-row">
-        <p>6. He had to drink black coffee just to stay <input type="text" id="v2_6" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> during the lecture.</p>
-      </div>
-      <div class="exercise-row">
-        <p>7. We played cards just to <input type="text" id="v2_7" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> the time while waiting for the train.</p>
-      </div>
-      <div class="exercise-row">
-        <p>8. She <input type="text" id="v2_8" class="gap-input" style="width: 150px;" oninput="saveInput(this)"> three hours reading an insightful psychology paper.</p>
-      </div>
-
-      <button class="btn-action" onclick="checkVocab2()">Check Vocabulary</button>
-      <span id="v2-res" class="result-tag"></span>
-    </div>
-
-    <!-- Task 3: Word Formation -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 3: Word Formation (EGE 25–29)</h3>
-      <p class="instructions">Transform the word in bold to fit the gap:</p>
-
-      <div class="exercise-row">
-        <p>1. Modern society often encourages <input type="text" id="v3_1" class="gap-input" style="width: 160px;" oninput="saveInput(this)"> leisure over creative work. <strong>(PASSIVE)</strong></p>
-      </div>
-      <div class="exercise-row">
-        <p>2. Entering flow requires deep, uninterrupted <input type="text" id="v3_2" class="gap-input" style="width: 160px;" oninput="saveInput(this)">. <strong>(CONCENTRATE)</strong></p>
-      </div>
-      <div class="exercise-row">
-        <p>3. His reaction was completely <input type="text" id="v3_3" class="gap-input" style="width: 160px;" oninput="saveInput(this)">, surprising everyone. <strong>(PREDICT)</strong></p>
-      </div>
-      <div class="exercise-row">
-        <p>4. Sleep <input type="text" id="v3_4" class="gap-input" style="width: 160px;" oninput="saveInput(this)"> quickly harms your memory and attention. <strong>(DEPRIVE)</strong></p>
-      </div>
-      <div class="exercise-row">
-        <p>5. Winning the competition was her greatest personal <input type="text" id="v3_5" class="gap-input" style="width: 160px;" oninput="saveInput(this)">. <strong>(ACHIEVE)</strong></p>
-      </div>
-      <div class="exercise-row">
-        <p>6. Constant digital distractions make people feel deeply <input type="text" id="v3_6" class="gap-input" style="width: 160px;" oninput="saveInput(this)">. <strong>(ANXIOUS)</strong></p>
-      </div>
-
-      <button class="btn-action" onclick="checkVocab3()">Check Word Formation</button>
-      <span id="v3-res" class="result-tag"></span>
-    </div>
-
-    <!-- Task 4: Definitions & Synonyms -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 4: Synonyms and Definitions</h3>
-      <p class="instructions">Match the word with its meaning:</p>
-
-      <div class="exercise-row">
-        <p>1. <strong>austere</strong> conditions &rarr;</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'syn1', 'syn_1')">plain, simple, with no luxury</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn1', 'syn_1')">luxurious and comfortable</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn1', 'syn_1')">dangerous and chaotic</button>
+      <!-- Exercise 4.1: Verb Forms -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.1: Verb Form Transformation (19–24 format)</h3>
+          <button onclick="checkGrammar1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
         </div>
-        <span id="syn1" class="result-tag"></span>
-      </div>
-
-      <div class="exercise-row">
-        <p>2. <strong>gratification</strong> &rarr;</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn2', 'syn_2')">severe exhaustion</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'syn2', 'syn_2')">pleasure and satisfaction</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn2', 'syn_2')">lack of interest</button>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>Last month, Jeff's father had the whole house <input id="g_1" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> by a specialist.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">CHECK</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>We are thinking of getting the entire villa <input id="g_2" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> blue next summer.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">PAINT</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>While they <input id="g_3" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> the windows inspected, water started leaking.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">HAVE</span>
+          </div>
         </div>
-        <span id="syn2" class="result-tag"></span>
+        <div id="g_ex1_fb" class="text-xs font-bold pt-1"></div>
       </div>
 
-      <div class="exercise-row">
-        <p>3. <strong>threshold</strong> &rarr;</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn3', 'syn_3')">total absence of something</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'syn3', 'syn_3')">a starting point or level</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn3', 'syn_3')">an unexpected mistake</button>
+      <!-- Exercise 4.2: Sentence Transformation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.2: Key Word Transformation (2–5 words)</h3>
+          <button onclick="checkGrammar2()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
         </div>
-        <span id="syn3" class="result-tag"></span>
-      </div>
-
-      <div class="exercise-row">
-        <p>4. <strong>equilibrium</strong> &rarr;</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'syn4', 'syn_4')">a state of mental balance</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn4', 'syn_4')">rapid emotional swings</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'syn4', 'syn_4')">a feeling of loneliness</button>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>1. Someone stole my bag during the bus journey.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">HAD</p>
+            <p>I <input id="kwt_1" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> during the bus journey.</p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>2. A professional photographer is taking a photo of Stephen.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">PICTURE</p>
+            <p>Stephen is <input id="kwt_2" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> by a professional photographer.</p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>3. Steve's father said he wasn't allowed to go to the club.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">LET</p>
+            <p>Steve's father <input id="kwt_3" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> to the club.</p>
+          </div>
         </div>
-        <span id="syn4" class="result-tag"></span>
+        <div id="g_ex2_fb" class="text-xs font-bold pt-1"></div>
       </div>
-    </div>
 
-    <!-- 6. GRAMMAR & USE OF ENGLISH -->
-    <div class="section-title">6. Grammar & Use of English</div>
-
-    <!-- Task 5: Modals -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 5: Modals of Deduction (must / can't / might)</h3>
-      <p class="instructions">Choose the correct modal form:</p>
-
-      <div class="exercise-row">
-        <p>1. Look at his confused face. He _____ the instructions properly.</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'm1', 'mod_1')">can't have understood</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm1', 'mod_1')">mustn't understand</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm1', 'mod_1')">shouldn't have understood</button>
+      <!-- Exercise 4.3: Error Correction -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.3: Error Identification</h3>
+          <button onclick="checkGrammar3()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
         </div>
-        <span id="m1" class="result-tag"></span>
-      </div>
-
-      <div class="exercise-row">
-        <p>2. Eleanor has been studying for nine hours straight. She _____ exhausted right now.</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'm2', 'mod_2')">must be</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm2', 'mod_2')">can't be</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm2', 'mod_2')">must have been</button>
+        <div class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>1. We had the decorator to paint the hallway yesterday.</span>
+            <input id="ec_1" type="text" class="sav bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-36" placeholder="correction">
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>2. Students don't suppose to bring animals into the hostel.</span>
+            <input id="ec_2" type="text" class="sav bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-36" placeholder="correction">
+          </div>
         </div>
-        <span id="m2" class="result-tag"></span>
+        <div id="g_ex3_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+    </section>
+
+    <!-- ================= 5. SPEAKING ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">5. Speaking Production</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Exam Practice</span>
       </div>
 
-      <div class="exercise-row">
-        <p>3. I can't find my notebook anywhere. I suppose I _____ it on the bus this morning.</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm3', 'mod_3')">must leave</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'm3', 'mod_3')">might have left</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm3', 'mod_3')">can leave</button>
+      <!-- Task 5.1: Interview Simulation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-200">Task 5.1: Oral Interview (40s response)</h3>
+          <span class="text-xs text-sky-400 font-mono">Timed Drill</span>
         </div>
-        <span id="m3" class="result-tag"></span>
-      </div>
-
-      <div class="exercise-row">
-        <p>4. You _____ seen Mark at the party yesterday; he was in Rome all weekend!</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm4', 'mod_4')">mustn't have</button>
-          <button class="opt-btn" onclick="checkBtn(this, true, 'm4', 'mod_4')">can't have</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm4', 'mod_4')">might not</button>
-        </div>
-        <span id="m4" class="result-tag"></span>
-      </div>
-
-      <div class="exercise-row">
-        <p>5. The lab door is locked and dark inside. They _____ home early.</p>
-        <div class="options-grid">
-          <button class="opt-btn" onclick="checkBtn(this, true, 'm5', 'mod_5')">must have gone</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm5', 'mod_5')">can have gone</button>
-          <button class="opt-btn" onclick="checkBtn(this, false, 'm5', 'mod_5')">should go</button>
-        </div>
-        <span id="m5" class="result-tag"></span>
-      </div>
-    </div>
-
-    <!-- Task 6: Contrast Linkers -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 6: Clauses of Contrast</h3>
-      <p class="instructions">Fill in: <em>although, even though, despite, in spite of, whereas</em>.</p>
-
-      <div class="exercise-row">
-        <p>1. <input type="text" id="g2_1" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> feeling exhausted, she finished her essay on time.</p>
-      </div>
-      <div class="exercise-row">
-        <p>2. The project was accepted, <input type="text" id="g2_2" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> the requested budget was denied.</p>
-      </div>
-      <div class="exercise-row">
-        <p>3. <input type="text" id="g2_3" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> he had enough talent, he rarely sat down to practice.</p>
-      </div>
-      <div class="exercise-row">
-        <p>4. Some students enjoy studying in groups, <input type="text" id="g2_4" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> others prefer silence.</p>
-      </div>
-      <div class="exercise-row">
-        <p>5. They went on the mountain hike <input type="text" id="g2_5" class="gap-input" style="width: 140px;" oninput="saveInput(this)"> the heavy rain and wind.</p>
-      </div>
-
-      <button class="btn-action" onclick="checkGrammar2()">Check Linkers</button>
-      <span id="g2-res" class="result-tag"></span>
-    </div>
-
-    <!-- Task 7: Transformations -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 7: Sentence Transformation</h3>
-      <p class="instructions">Complete the second sentence using 2 to 5 words, including the word in bold:</p>
-
-      <div class="exercise-row">
-        <p>1. I am sure Arthur did not tell her the secret. <strong>(CAN'T)</strong></p>
-        <p style="margin-top: 6px;">Arthur <input type="text" id="g3_1" class="gap-input" style="width: 260px;" oninput="saveInput(this)"> her the secret.</p>
-      </div>
-
-      <div class="exercise-row">
-        <p>2. In spite of the bad weather, they continued their work. <strong>(EVEN)</strong></p>
-        <p style="margin-top: 6px;">They continued their work, <input type="text" id="g3_2" class="gap-input" style="width: 260px;" oninput="saveInput(this)"> bad.</p>
-      </div>
-
-      <div class="exercise-row">
-        <p>3. It is probable that they missed the flight. <strong>(MAY)</strong></p>
-        <p style="margin-top: 6px;">They <input type="text" id="g3_3" class="gap-input" style="width: 260px;" oninput="saveInput(this)"> the flight.</p>
-      </div>
-
-      <div class="exercise-row">
-        <p>4. She started researching flow four years ago and still does. <strong>(BEEN)</strong></p>
-        <p style="margin-top: 6px;">She <input type="text" id="g3_4" class="gap-input" style="width: 260px;" oninput="saveInput(this)"> flow for four years.</p>
-      </div>
-
-      <div class="exercise-row">
-        <p>5. It's impossible that he forgot his own birthday. <strong>(COULDN'T)</strong></p>
-        <p style="margin-top: 6px;">He <input type="text" id="g3_5" class="gap-input" style="width: 260px;" oninput="saveInput(this)"> his own birthday.</p>
-      </div>
-
-      <button class="btn-action" onclick="checkGrammar3()">Check Transformations</button>
-      <span id="g3-res" class="result-tag"></span>
-    </div>
-
-    <!-- Task 8: Error Correction -->
-    <div class="card">
-      <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Exercise 8: Error Correction</h3>
-      <p class="instructions">Fix the mistake in each sentence and type the correction:</p>
-
-      <div class="exercise-row">
-        <p>1. "Despite of having enough money, he felt deeply unhappy." &rarr; <input type="text" id="g4_1" class="gap-input" style="width: 220px;" placeholder="Correction" oninput="saveInput(this)"></p>
-      </div>
-      <div class="exercise-row">
-        <p>2. "She has been knowing this psychologist for ten years." &rarr; <input type="text" id="g4_2" class="gap-input" style="width: 220px;" placeholder="Correction" oninput="saveInput(this)"></p>
-      </div>
-      <div class="exercise-row">
-        <p>3. "You mustn't have seen Henry yesterday; he is in Paris!" &rarr; <input type="text" id="g4_3" class="gap-input" style="width: 220px;" placeholder="Correction" oninput="saveInput(this)"></p>
-      </div>
-      <div class="exercise-row">
-        <p>4. "The loud construction made a lot of problems for our team." &rarr; <input type="text" id="g4_4" class="gap-input" style="width: 220px;" placeholder="Correction" oninput="saveInput(this)"></p>
-      </div>
-      <div class="exercise-row">
-        <p>5. "He must to be very tired after the match." &rarr; <input type="text" id="g4_5" class="gap-input" style="width: 220px;" placeholder="Correction" oninput="saveInput(this)"></p>
-      </div>
-
-      <button class="btn-action" onclick="checkGrammar4()">Check Corrections</button>
-      <span id="g4-res" class="result-tag"></span>
-    </div>
-
-    <!-- 7. SPEAKING -->
-    <div class="section-title">7. Speaking: EGE Task 4</div>
-    <div class="card">
-      <div class="quote-box">
-        <strong>Project Prompt:</strong> Imagine you and your friend are working on a school project called <strong>"Ways of Spending Downtime"</strong>. You have found two photos and are recording an audio message to discuss them.
-      </div>
-
-      <div class="speaking-photos">
-        <div class="photo-card">
-          <div class="photo-tag">Photo 1: Reading Alone</div>
-          <p style="font-size: 0.95rem; color: #444;">A student sitting alone in a quiet university library, reading a thick book and taking handwritten notes with a desk lamp turned on.</p>
-        </div>
-        <div class="photo-card">
-          <div class="photo-tag">Photo 2: Group Gaming</div>
-          <p style="font-size: 0.95rem; color: #444;">A group of friends sitting together in an apartment, wearing headsets and laughing while playing an active video game on a big screen.</p>
+        <div class="space-y-3">
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-slate-200">"What type of house do you live in, and what do you like most about its location?"</p>
+            <div class="flex items-center space-x-2 shrink-0">
+              <span id="tm1" class="font-mono text-xs font-bold text-slate-400">40s</span>
+              <button onclick="runTimer('tm1', 40, this)" class="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-xs font-bold transition">Start</button>
+            </div>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-slate-200">"Do you think having personal space at home is necessary for young people? Why?"</p>
+            <div class="flex items-center space-x-2 shrink-0">
+              <span id="tm2" class="font-mono text-xs font-bold text-slate-400">40s</span>
+              <button onclick="runTimer('tm2', 40, this)" class="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-xs font-bold transition">Start</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <p class="instructions">Plan your 3-minute message according to the exam requirements:</p>
-      <ul class="clean-list">
-        <li><strong>Explain the choice of photos:</strong> briefly describe both photos and point out at least <em>two differences</em> related to the project.</li>
-        <li><strong>Advantages and disadvantages:</strong> give 1–2 pros and cons of both activities (solitary reading vs. group gaming).</li>
-        <li><strong>Your opinion:</strong> say which way of spending free time you personally prefer and explain why.</li>
-      </ul>
+      <!-- Task 5.2: Two-Picture Comparison -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-200">Task 5.2: Picture Comparison & Discussion</h3>
+          <div class="space-x-2">
+            <button onclick="runTimer('tm_prep', 150, this)" class="px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs font-bold hover:bg-slate-700 transition">Prep: <span id="tm_prep">2m 30s</span></button>
+            <button onclick="runTimer('tm_spk', 180, this)" class="px-3 py-1 bg-sky-600 text-white rounded text-xs font-bold hover:bg-sky-500 transition">Speak: <span id="tm_spk">3m 00s</span></button>
+          </div>
+        </div>
 
-      <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--border); font-size: 0.9rem; color: var(--text-muted);">
-        <strong>Useful Phrases:</strong><br>
-        • <em>"Hi, I've found two photos that work well for our project..."</em><br>
-        • <em>"The first picture shows... whereas the second one portrays..."</em><br>
-        • <em>"One advantage of reading in silence is... However, a drawback might be..."</em><br>
-        • <em>"As for me, I prefer... because..."</em>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5">
+            <span class="font-bold text-sky-400 uppercase tracking-wider">Photo 1: Country Garden House</span>
+            <p class="text-slate-400">Family growing vegetables, open green space, fresh air, maintenance duties, isolated from city entertainment.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5">
+            <span class="font-bold text-indigo-400 uppercase tracking-wider">Photo 2: High-Rise City Balcony</span>
+            <p class="text-slate-400">Compact balcony overlooking skyline, crowded amenities, close to culture and shops, possible noise and pollution.</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 space-y-1">
+          <p class="font-bold text-white uppercase text-[11px]">Speech Plan:</p>
+          <p>1. Open message to friend & mention project relevance.</p>
+          <p>2. Give 2 differences between living environments.</p>
+          <p>3. Give 1 advantage & 1 disadvantage of each place.</p>
+          <p>4. State your personal preference with reasons.</p>
+        </div>
+        <textarea id="spk_notes" class="sav w-full p-3 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" rows="3" placeholder="Notes for your oral response..."></textarea>
       </div>
-    </div>
+    </section>
 
   </div>
 
+  <!-- JAVASCRIPT: LOGIC & PERSISTENCE -->
   <script>
-    // LocalStorage Auto-save
-    function saveInput(el) {
-      localStorage.setItem(el.id, el.value);
+    const CARDS = [
+      { w: "housing estate", t: "/ˈhaʊ.zɪŋ ɪˌsteɪt/", r: "жилой массив / комплекс", c: "residing on a newly planned housing estate" },
+      { w: "within walking distance", t: "/wɪˈðɪn ˈwɔː.kɪŋ ˈdɪs.təns/", r: "в пешей доступности", c: "shops within walking distance" },
+      { w: "personal space", t: "/ˈpɜː.sən.əl speɪs/", r: "личное пространство", c: "invading someone's personal space" },
+      { w: "ample room", t: "/ˈæm.pəl ruːm/", r: "достаточно места / простор", c: "ample room for books and furniture" },
+      { w: "parking space", t: "/ˈpɑː.kɪŋ speɪs/", r: "парковочное место", c: "searching for an empty parking space" },
+      { w: "prime location", t: "/praɪm ləʊˈkeɪ.ʃən/", r: "выгодное расположение", c: "a flat in a prime location near the canal" },
+      { w: "market square", t: "/ˈmɑː.kɪt skweər/", r: "рыночная площадь", c: "windows overlooking the central square" },
+      { w: "residential area", t: "/ˌrez.ɪˈden.ʃəl ˈeə.ri.ə/", r: "жилой / спальный район", c: "relocating to a quiet residential area" },
+      { w: "spacious", t: "/ˈspeɪ.ʃəs/", r: "просторный, вместительный", c: "a spacious, sunny living room" },
+      { w: "cramped", t: "/kræmpt/", r: "тесный, загроможденный", c: "cramped quarters in an old boat" }
+    ];
+
+    let cardIdx = 0;
+    let cardStats = {};
+
+    function updateCardView() {
+      const c = CARDS[cardIdx];
+      document.getElementById('fc-word').innerText = c.w;
+      document.getElementById('fc-transc').innerText = c.t;
+      document.getElementById('fc-trans').innerText = c.r;
+      document.getElementById('fc-colloc').innerText = `"${c.c}"`;
+      
+      const done = cardStats[c.w] ? " ✓" : "";
+      document.getElementById('fc-stat').innerText = `Card ${cardIdx + 1} / ${CARDS.length}${done}`;
+      document.getElementById('fc-box').classList.remove('flipped');
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.gap-input').forEach(input => {
-        const saved = localStorage.getItem(input.id);
-        if (saved !== null) input.value = saved;
-      });
-
-      // Restore button states
-      ['rc_1', 'rc_2', 'rc_3', 'rc_4', 'syn_1', 'syn_2', 'syn_3', 'syn_4', 'mod_1', 'mod_2', 'mod_3', 'mod_4', 'mod_5'].forEach(key => {
-        const savedIndex = localStorage.getItem(key);
-        if (savedIndex !== null) {
-          const row = document.querySelector(`[data-group="${key}"]`);
-        }
-      });
-    });
-
-    // Toggle Translations
-    let transHidden = false;
-    function toggleTranslations() {
-      const trans = document.querySelectorAll('.vocab-trans');
-      const btn = document.getElementById('toggle-btn');
-      transHidden = !transHidden;
-      trans.forEach(t => {
-        if(transHidden) t.classList.add('hidden');
-        else t.classList.remove('hidden');
-      });
-      btn.textContent = transHidden ? "Show Russian Translations" : "Hide Russian Translations";
+    function toggleCard() {
+      document.getElementById('fc-box').classList.toggle('flipped');
     }
 
-    // Generic Button Checker
-    function checkBtn(btn, isCorrect, targetId, storageKey) {
-      const parent = btn.parentElement;
-      parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active-correct', 'active-wrong'));
-      const res = document.getElementById(targetId);
-      if(isCorrect) {
-        btn.classList.add('active-correct');
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ Correct";
-        if(storageKey) localStorage.setItem(storageKey, 'correct');
-      } else {
-        btn.classList.add('active-wrong');
-        res.style.color = "var(--wrong)";
-        res.textContent = "Try again";
-        if(storageKey) localStorage.setItem(storageKey, 'wrong');
-      }
+    function nextCard() {
+      cardIdx = (cardIdx + 1) % CARDS.length;
+      updateCardView();
     }
 
-    // Vocab 1 Check
+    function prevCard() {
+      cardIdx = (cardIdx - 1 + CARDS.length) % CARDS.length;
+      updateCardView();
+    }
+
+    function markCard(mastered) {
+      cardStats[CARDS[cardIdx].w] = mastered;
+      localStorage.setItem('hs_c_stats', JSON.stringify(cardStats));
+      updateCardView();
+      calcProgress();
+      nextCard();
+    }
+
     function checkVocab1() {
-      let score = 0;
-      if(document.getElementById('v1_1').value.trim().toLowerCase() === 'carry out') score++;
-      if(document.getElementById('v1_2').value.trim().toLowerCase() === 'cause') score++;
-      if(document.getElementById('v1_3').value.trim().toLowerCase() === 'devote') score++;
-      if(document.getElementById('v1_4').value.trim().toLowerCase() === 'achieved') score++;
-      if(document.getElementById('v1_5').value.trim().toLowerCase() === 'make') score++;
-      if(document.getElementById('v1_6').value.trim().toLowerCase() === 'caused') score++;
-      if(document.getElementById('v1_7').value.trim().toLowerCase() === 'carry out') score++;
-      if(document.getElementById('v1_8').value.trim().toLowerCase() === 'achieve') score++;
-
-      const res = document.getElementById('v1-res');
-      if(score === 8) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 8/8 Correct!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/8 correct. Check tenses (past: achieved, caused).`;
+      const keys = { v_ex1_1: "room", v_ex1_2: "space", v_ex1_3: "place", v_ex1_4: "area" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value === keys[k]) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 text-emerald-300 font-bold rounded px-2 py-0.5 mx-1";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 text-rose-300 font-bold rounded px-2 py-0.5 mx-1";
+        }
       }
+      document.getElementById('v_ex1_fb').innerText = `Score: ${c} / 4`;
+      document.getElementById('v_ex1_fb').className = `text-xs font-bold pt-1 ${c === 4 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
     }
 
-    // Vocab 2 Check
     function checkVocab2() {
-      let score = 0;
-      if(document.getElementById('v2_1').value.trim().toLowerCase() === 'empirical') score++;
-      if(document.getElementById('v2_2').value.trim().toLowerCase() === 'intrinsic') score++;
-      if(document.getElementById('v2_3').value.trim().toLowerCase() === 'threshold') score++;
-      if(document.getElementById('v2_4').value.trim().toLowerCase() === 'diminishing') score++;
-      if(document.getElementById('v2_5').value.trim().toLowerCase() === 'equilibrium') score++;
-      if(document.getElementById('v2_6').value.trim().toLowerCase() === 'awake') score++;
-      if(document.getElementById('v2_7').value.trim().toLowerCase() === 'pass') score++;
-      if(document.getElementById('v2_8').value.trim().toLowerCase() === 'spent') score++;
-
-      const res = document.getElementById('v2-res');
-      if(score === 8) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 8/8 Correct!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/8 correct.`;
+      const keys = { wf_1: "SHORTAGE", wf_2: "RESIDENTIAL", wf_3: "SPACIOUS" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value.trim().toUpperCase() === keys[k]) {
+          el.className = "sav uppercase bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-32";
+          c++;
+        } else {
+          el.className = "sav uppercase bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-32";
+        }
       }
+      document.getElementById('v_ex2_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('v_ex2_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
     }
 
-    // Vocab 3 Check
     function checkVocab3() {
-      let score = 0;
-      if(document.getElementById('v3_1').value.trim().toLowerCase() === 'passive') score++;
-      if(document.getElementById('v3_2').value.trim().toLowerCase() === 'concentration') score++;
-      if(document.getElementById('v3_3').value.trim().toLowerCase() === 'unpredictable') score++;
-      if(document.getElementById('v3_4').value.trim().toLowerCase() === 'deprivation') score++;
-      if(document.getElementById('v3_5').value.trim().toLowerCase() === 'achievement') score++;
-      if(document.getElementById('v3_6').value.trim().toLowerCase() === 'anxious') score++;
-
-      const res = document.getElementById('v3-res');
-      if(score === 6) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 6/6 Correct!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/6 correct. Check spelling and prefixes.`;
+      const keys = { mc_1: "2", mc_2: "1" };
+      let c = 0;
+      for (let k in keys) {
+        const r = document.querySelector(`input[name="${k}"]:checked`);
+        if (r && r.value === keys[k]) c++;
       }
+      document.getElementById('v_ex3_fb').innerText = `Score: ${c} / 2`;
+      document.getElementById('v_ex3_fb').className = `text-xs font-bold pt-1 ${c === 2 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
     }
 
-    // Grammar 2 Check
+    function checkReading1() {
+      const keys = { r_tf_1: "F", r_tf_2: "F", r_tf_3: "T" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value === keys[k]) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 text-emerald-300 font-bold rounded px-2 py-0.5 text-xs";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 text-rose-300 font-bold rounded px-2 py-0.5 text-xs";
+        }
+      }
+      document.getElementById('r_ex1_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('r_ex1_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkGrammar1() {
+      const keys = { g_1: "CHECKED", g_2: "PAINTED", g_3: "WERE HAVING" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value.trim().toUpperCase() === keys[k]) {
+          el.className = "sav uppercase bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-32";
+          c++;
+        } else {
+          el.className = "sav uppercase bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-32";
+        }
+      }
+      document.getElementById('g_ex1_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('g_ex1_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
     function checkGrammar2() {
-      let score = 0;
-      const g1 = document.getElementById('g2_1').value.trim().toLowerCase();
-      const g2 = document.getElementById('g2_2').value.trim().toLowerCase();
-      const g3 = document.getElementById('g2_3').value.trim().toLowerCase();
-      const g4 = document.getElementById('g2_4').value.trim().toLowerCase();
-      const g5 = document.getElementById('g2_5').value.trim().toLowerCase();
-
-      if(g1 === 'despite' || g1 === 'in spite of') score++;
-      if(g2 === 'whereas' || g2 === 'while' || g2 === 'although') score++;
-      if(g3 === 'although' || g3 === 'even though') score++;
-      if(g4 === 'whereas' || g4 === 'while') score++;
-      if(g5 === 'despite' || g5 === 'in spite of') score++;
-
-      const res = document.getElementById('g2-res');
-      if(score === 5) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 5/5 Correct!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/5 correct.`;
+      const keys = {
+        kwt_1: ["HAD MY BAG STOLEN"],
+        kwt_2: ["HAVING HIS PICTURE TAKEN", "GETTING HIS PICTURE TAKEN"],
+        kwt_3: ["WOULD NOT LET HIM GO", "REFUSED TO LET HIM GO", "DID NOT LET HIM GO"]
+      };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        const val = el.value.trim().toUpperCase();
+        if (keys[k].includes(val)) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 px-2.5 py-1 rounded text-emerald-300 font-bold w-64";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 px-2.5 py-1 rounded text-rose-300 font-bold w-64";
+        }
       }
+      document.getElementById('g_ex2_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('g_ex2_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
     }
 
-    // Grammar 3 Check
     function checkGrammar3() {
-      let score = 0;
-      const t1 = document.getElementById('g3_1').value.trim().toLowerCase();
-      const t2 = document.getElementById('g3_2').value.trim().toLowerCase();
-      const t3 = document.getElementById('g3_3').value.trim().toLowerCase();
-      const t4 = document.getElementById('g3_4').value.trim().toLowerCase();
-      const t5 = document.getElementById('g3_5').value.trim().toLowerCase();
-
-      if(t1.includes("can't have told") || t1.includes("cannot have told")) score++;
-      if(t2.includes("even though the weather was") || t2.includes("even though it was")) score++;
-      if(t3.includes("may have missed") || t3.includes("might have missed")) score++;
-      if(t4.includes("has been researching")) score++;
-      if(t5.includes("couldn't have forgotten")) score++;
-
-      const res = document.getElementById('g3-res');
-      if(score === 5) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 5/5 Correct!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/5 correct. Check modal perfect forms.`;
+      const keys = { ec_1: "PAINT", ec_2: "AREN'T SUPPOSED" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        const val = el.value.trim().toUpperCase();
+        if (val === keys[k] || (k === 'ec_2' && val === "ARE NOT SUPPOSED")) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-36";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-36";
+        }
       }
+      document.getElementById('g_ex3_fb').innerText = `Score: ${c} / 2`;
+      document.getElementById('g_ex3_fb').className = `text-xs font-bold pt-1 ${c === 2 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
     }
 
-    // Grammar 4 Check
-    function checkGrammar4() {
-      let score = 0;
-      const c1 = document.getElementById('g4_1').value.trim().toLowerCase();
-      const c2 = document.getElementById('g4_2').value.trim().toLowerCase();
-      const c3 = document.getElementById('g4_3').value.trim().toLowerCase();
-      const c4 = document.getElementById('g4_4').value.trim().toLowerCase();
-      const c5 = document.getElementById('g4_5').value.trim().toLowerCase();
+    const timers = {};
+    function runTimer(id, sec, btn) {
+      if (timers[id]) clearInterval(timers[id]);
+      let rem = sec;
+      const el = document.getElementById(id);
+      btn.disabled = true;
 
-      if(c1 === 'despite' || c1 === 'in spite of') score++;
-      if(c2.includes('has known')) score++;
-      if(c3.includes("can't have seen") || c3.includes("cannot have seen")) score++;
-      if(c4.includes('caused') || c4.includes('caused a lot of')) score++;
-      if(c5.includes('must be')) score++;
+      const fmt = (s) => {
+        const m = Math.floor(s / 60);
+        const sc = s % 60;
+        return m > 0 ? `${m}m ${sc < 10 ? '0' : ''}${sc}s` : `${sc}s`;
+      };
 
-      const res = document.getElementById('g4-res');
-      if(score === 5) {
-        res.style.color = "var(--correct)";
-        res.textContent = "✓ 5/5 All errors fixed!";
-      } else {
-        res.style.color = "var(--wrong)";
-        res.textContent = `${score}/5 correct. Hints: despite (no 'of') / has known / can't have seen / caused problems / must be (no 'to').`;
-      }
+      el.innerText = fmt(rem);
+      el.className = "font-mono text-xs font-bold text-amber-400";
+
+      timers[id] = setInterval(() => {
+        rem--;
+        el.innerText = fmt(rem);
+        if (rem <= 0) {
+          clearInterval(timers[id]);
+          el.innerText = "Time!";
+          el.className = "font-mono text-xs font-bold text-rose-500";
+          btn.disabled = false;
+        }
+      }, 1000);
     }
+
+    function calcProgress() {
+      let total = 0;
+      let filled = 0;
+
+      document.querySelectorAll('.sav').forEach(el => {
+        total++;
+        if (el.value && el.value.trim().length > 0) filled++;
+      });
+
+      ['mc_1', 'mc_2'].forEach(name => {
+        total++;
+        if (document.querySelector(`input[name="${name}"]:checked`)) filled++;
+      });
+
+      total += CARDS.length;
+      filled += Object.values(cardStats).filter(v => v === true).length;
+
+      const pct = Math.round((filled / total) * 100) || 0;
+      document.getElementById('prog-bar').style.width = pct + '%';
+      document.getElementById('prog-pct').innerText = pct + '%';
+    }
+
+    function initLesson() {
+      document.querySelectorAll('.sav').forEach(el => {
+        const saved = localStorage.getItem('hs2_' + el.id);
+        if (saved !== null) el.value = saved;
+        el.addEventListener('input', () => {
+          localStorage.setItem('hs2_' + el.id, el.value);
+          calcProgress();
+        });
+      });
+
+      document.querySelectorAll('.sav-r').forEach(el => {
+        const saved = localStorage.getItem('hs2_rad_' + el.name);
+        if (saved !== null && el.value === saved) el.checked = true;
+        el.addEventListener('change', () => {
+          if (el.checked) {
+            localStorage.setItem('hs2_rad_' + el.name, el.value);
+            calcProgress();
+          }
+        });
+      });
+
+      const s = localStorage.getItem('hs_c_stats');
+      if (s) cardStats = JSON.parse(s);
+
+      updateCardView();
+      calcProgress();
+    }
+
+    document.addEventListener('DOMContentLoaded', initLesson);
   </script>
 </body>
 </html>
