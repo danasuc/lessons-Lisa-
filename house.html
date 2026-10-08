@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House space — Complete Lesson</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b1120; color: #f1f5f9; }
+    .card-3d { perspective: 1000px; }
+    .card-3d-inner { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+    .card-3d.flipped .card-3d-inner { transform: rotateY(180deg); }
+    .card-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .card-back { transform: rotateY(180deg); }
+    input, textarea, select { accent-color: #38bdf8; }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 selection:bg-sky-500 selection:text-white">
+
+  <div class="max-w-4xl mx-auto space-y-8">
+
+    <!-- HEADER / BANNER -->
+    <header class="rounded-2xl bg-gradient-to-b from-slate-900 to-slate-900/90 border border-slate-800 p-8 text-center space-y-3 shadow-xl">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase text-sky-400 bg-sky-950/60 border border-sky-800/80">
+        Complete First · Unit 13
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">House space</h1>
+      <p class="text-sm sm:text-base text-slate-400 max-w-xl mx-auto font-medium">
+        Living arrangements, spatial vocabulary, causative constructions, and communicative practice
+      </p>
+
+      <!-- PROGRESS BAR -->
+      <div class="pt-4 max-w-md mx-auto">
+        <div class="flex justify-between items-center text-xs font-semibold text-slate-400 mb-2">
+          <span>Lesson Progress</span>
+          <span id="prog-pct" class="text-sky-400 font-mono font-bold">0%</span>
+        </div>
+        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700/60">
+          <div id="prog-bar" class="bg-gradient-to-r from-sky-500 to-indigo-500 h-full w-0 transition-all duration-300"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= 1. WARM-UP ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3">
+        <h2 class="text-xl font-bold text-sky-400 flex items-center gap-2">
+          <span>1. Warm-Up</span>
+        </h2>
+      </div>
+
+      <!-- Exercise 1.1 -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 1.1: Personal Living Choices</h3>
+        <p class="text-xs text-slate-400">Answer the questions with your tutor or write your thoughts below:</p>
+        <ul class="text-xs sm:text-sm text-slate-300 space-y-1.5 list-disc list-inside">
+          <li>Which type of place would you prefer for a one-year stay: a mountain chalet, a high-rise flat, or a suburban house?</li>
+          <li>Which three factors matter most to you: quiet surroundings, good public transport, a garden, or shops within walking distance?</li>
+        </ul>
+        <textarea id="wu_1" class="sav w-full p-3.5 rounded-lg bg-slate-950 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-sky-500 transition" rows="3" placeholder="Notes / Your opinion..."></textarea>
+      </div>
+
+      <!-- Exercise 1.2 -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 1.2: Picture Analysis & Prediction</h3>
+        <p class="text-xs text-slate-400">Look at the contrast between living in historical Venice and living in a modern houseboat:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-lg overflow-hidden border border-slate-700 bg-slate-950 p-3 space-y-2">
+            <span class="text-xs font-bold text-sky-400">Option A: Historic Canal House (Venice)</span>
+            <p class="text-xs text-slate-400">Ground floor used as a damp warehouse, boat entrance, stone arched windows, noise of gondolas at night.</p>
+          </div>
+          <div class="rounded-lg overflow-hidden border border-slate-700 bg-slate-950 p-3 space-y-2">
+            <span class="text-xs font-bold text-indigo-400">Option B: River Houseboat</span>
+            <p class="text-xs text-slate-400">20 metres long, compact rooms, rocking in windy storms, no garden, but beautiful water view.</p>
+          </div>
+        </div>
+        <label class="block text-xs font-semibold text-slate-300">What would be the most difficult everyday challenge in each place?</label>
+        <textarea id="wu_2" class="sav w-full p-3.5 rounded-lg bg-slate-950 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-sky-500 transition" rows="2" placeholder="Write your comparison..."></textarea>
+      </div>
+    </section>
+
+    <!-- ================= 2. VOCABULARY ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">2. Vocabulary</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Housing & Space</span>
+      </div>
+
+      <!-- Flashcards Trainer Block -->
+      <div class="rounded-xl bg-slate-800/40 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex justify-between items-center text-xs font-semibold">
+          <span class="text-slate-300 uppercase tracking-wider">Interactive Vocabulary Flashcards</span>
+          <span id="fc-stat" class="font-mono text-sky-400">Card 1 / 10</span>
+        </div>
+
+        <div class="max-w-md mx-auto">
+          <div id="fc-box" class="card-3d w-full h-48 cursor-pointer select-none" onclick="toggleCard()">
+            <div class="card-3d-inner relative w-full h-full rounded-xl border border-slate-700 bg-slate-950 p-6 flex flex-col justify-center items-center text-center shadow-lg">
+              <div class="card-face absolute inset-0 p-6 flex flex-col items-center justify-center">
+                <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">Target Term</span>
+                <p id="fc-word" class="text-2xl font-extrabold text-white"></p>
+                <p id="fc-transc" class="text-xs font-mono text-slate-400 mt-1"></p>
+                <span class="text-[11px] text-slate-500 mt-4">Click to flip card ↺</span>
+              </div>
+              <div class="card-face card-back absolute inset-0 p-6 flex flex-col items-center justify-center bg-slate-900 rounded-xl">
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">Translation & Meaning</span>
+                <p id="fc-trans" class="text-lg font-bold text-slate-100"></p>
+                <p id="fc-colloc" class="text-xs text-slate-400 mt-2 italic text-center"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center mt-4">
+            <button onclick="prevCard()" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition">← Prev</button>
+            <div class="space-x-2">
+              <button onclick="markCard(false)" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-950/60 border border-amber-800 text-amber-300 hover:bg-amber-900/60 transition">Still Learning</button>
+              <button onclick="markCard(true)" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-emerald-950/60 border border-emerald-800 text-emerald-300 hover:bg-emerald-900/60 transition">Mastered ✓</button>
+            </div>
+            <button onclick="nextCard()" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vocab Table -->
+      <div class="overflow-x-auto rounded-xl border border-slate-800">
+        <table class="w-full text-left text-xs sm:text-sm text-slate-300">
+          <thead class="bg-slate-950 text-slate-400 text-xs uppercase font-bold border-b border-slate-800">
+            <tr>
+              <th class="p-3">Word / Phrase</th>
+              <th class="p-3">Transcription</th>
+              <th class="p-3">Russian Translation</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/80 font-sans">
+            <tr><td class="p-3 font-semibold text-white">housing estate</td><td class="p-3 font-mono text-slate-400">/ˈhaʊ.zɪŋ ɪˌsteɪt/</td><td class="p-3">жилой массив / микрорайон</td></tr>
+            <tr><td class="p-3 font-semibold text-white">within walking distance</td><td class="p-3 font-mono text-slate-400">/wɪˈðɪn ˈwɔː.kɪŋ ˈdɪs.təns/</td><td class="p-3">в пешей доступности</td></tr>
+            <tr><td class="p-3 font-semibold text-white">personal space</td><td class="p-3 font-mono text-slate-400">/ˈpɜː.sən.əl speɪs/</td><td class="p-3">личное пространство</td></tr>
+            <tr><td class="p-3 font-semibold text-white">ample room</td><td class="p-3 font-mono text-slate-400">/ˈæm.pəl ruːm/</td><td class="p-3">достаточно места / простор</td></tr>
+            <tr><td class="p-3 font-semibold text-white">parking space</td><td class="p-3 font-mono text-slate-400">/ˈpɑː.kɪŋ speɪs/</td><td class="p-3">место для парковки</td></tr>
+            <tr><td class="p-3 font-semibold text-white">prime location</td><td class="p-3 font-mono text-slate-400">/praɪm ləʊˈkeɪ.ʃən/</td><td class="p-3">выгодное расположение</td></tr>
+            <tr><td class="p-3 font-semibold text-white">market square</td><td class="p-3 font-mono text-slate-400">/ˈmɑː.kɪt skweər/</td><td class="p-3">рыночная площадь</td></tr>
+            <tr><td class="p-3 font-semibold text-white">residential area</td><td class="p-3 font-mono text-slate-400">/ˌrez.ɪˈden.ʃəl ˈeə.ri.ə/</td><td class="p-3">жилой / спальный район</td></tr>
+            <tr><td class="p-3 font-semibold text-white">spacious</td><td class="p-3 font-mono text-slate-400">/ˈspeɪ.ʃəs/</td><td class="p-3">просторный, вместительный</td></tr>
+            <tr><td class="p-3 font-semibold text-white">cramped</td><td class="p-3 font-mono text-slate-400">/kræmpt/</td><td class="p-3">тесный, загроможденный</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercise 2.1: Confusable Nouns -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.1: Space, Place, Room, Area, or Location?</h3>
+          <button onclick="checkVocab1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+          <p>1. The flat is small, but there is enough 
+            <select id="v_ex1_1" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="room">room</option><option value="space">space</option><option value="place">place</option>
+            </select> for all the things I am bringing.</p>
+          <p>2. We converted the old garage into a studio, but now we have no parking 
+            <select id="v_ex1_2" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="space">space</option><option value="area">area</option><option value="location">location</option>
+            </select>.</p>
+          <p>3. Venice is a strange and beautiful 
+            <select id="v_ex1_3" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="place">place</option><option value="area">area</option><option value="space">space</option>
+            </select> to live in.</p>
+          <p>4. The animals in this reserve have a huge 
+            <select id="v_ex1_4" class="sav bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold mx-1">
+              <option value="">--</option><option value="area">area</option><option value="room">room</option><option value="location">location</option>
+            </select> to move around.</p>
+        </div>
+        <div id="v_ex1_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 2.2: Word Formation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.2: Word Formation (25–29 format)</h3>
+          <button onclick="checkVocab2()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>Urban areas face an acute housing <input id="wf_1" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer">.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">SHORT</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>It is a quiet <input id="wf_2" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> district away from the city centre.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">RESIDE</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>The living room is exceptionally <input id="wf_3" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> and airy.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">SPACE</span>
+          </div>
+        </div>
+        <div id="v_ex2_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 2.3: Multiple Choice -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 2.3: Prepositions & Collocations (30–36 format)</h3>
+          <button onclick="checkVocab3()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="p-3 rounded bg-slate-950 border border-slate-800 space-y-1.5">
+            <p>1. The cottage is situated ______ walking distance of public transport.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="1" class="sav-r"><span>1) on</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="2" class="sav-r"><span>2) within</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="3" class="sav-r"><span>3) by</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_1" value="4" class="sav-r"><span>4) at</span></label>
+            </div>
+          </div>
+          <div class="p-3 rounded bg-slate-950 border border-slate-800 space-y-1.5">
+            <p>2. We decided to relocate to the ______ of town to have more fresh air.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="1" class="sav-r"><span>1) outskirts</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="2" class="sav-r"><span>2) edges</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="3" class="sav-r"><span>3) borders</span></label>
+              <label class="flex items-center space-x-1.5 cursor-pointer"><input type="radio" name="mc_2" value="4" class="sav-r"><span>4) boundaries</span></label>
+            </div>
+          </div>
+        </div>
+        <div id="v_ex3_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+    </section>
+
+    <!-- ================= 3. READING ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">3. Reading Comprehension</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Historical Venice (1733)</span>
+      </div>
+
+      <!-- Text -->
+      <div class="rounded-xl bg-slate-950 border border-slate-800 p-5 text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">My New Home in Venice, 1733</h4>
+        <p>
+          Uncle Leo gives me a suspicious look when I call this place the 'Scacchi Palace'. It is really a house, although elsewhere in the world this would easily be regarded as a palace, even if it is in need of a little care and attention. Our house is by the side of the Rio San Cassian canal and a small square. We have a door which leads onto the street and two entrances from the water. One runs under a grand rounded arch into the ground floor of the house, which, as is customary in Venice, is used instead of a cellar for storing goods.
+        </p>
+        <p>
+          There is yet another exit: a wooden bridge with handrails runs from the first floor of the house straight over the canal and into the square itself. Consequently I can wander over it in the morning and find fresh water from the well in the centre of the square while still rubbing the sleep from my eyes. Or I can hail a gondola from my bedroom window! The house is almost 300 years old, built of dark brown bricks and with elegant arched windows. When I lie in bed at night, I hear the passing gondoliers singing in the square.
+        </p>
+      </div>
+
+      <!-- Exercise 3.1: True / False / Not Stated -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 3.1: Text Evaluation (T / F / NS)</h3>
+          <button onclick="checkReading1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>1. Uncle Leo's house is in perfect physical condition.</span>
+            <select id="r_tf_1" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>2. The ground floor is occupied by bedrooms for servants.</span>
+            <select id="r_tf_2" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>3. The bridge allows the writer to enter the square without going outside onto street level.</span>
+            <select id="r_tf_3" class="sav bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-sky-400 font-bold text-xs">
+              <option value="">--</option><option value="T">True</option><option value="F">False</option><option value="NS">Not Stated</option>
+            </select>
+          </div>
+        </div>
+        <div id="r_ex1_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 3.2: Short Questions -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <h3 class="text-sm font-bold text-slate-200">Exercise 3.2: Questions to the Text</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">1. Why does Uncle Leo react suspiciously to the name 'Scacchi Palace'?</label>
+            <input id="r_q1" type="text" class="sav w-full p-2.5 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" placeholder="He thinks it is just an ordinary house that needs repairs...">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">2. What sounds does the narrator hear when trying to sleep at night?</label>
+            <input id="r_q2" type="text" class="sav w-full p-2.5 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" placeholder="The songs and chatter of passing gondoliers...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. GRAMMAR ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">4. Grammar Section</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Causative Have / Get</span>
+      </div>
+
+      <!-- Theory Box -->
+      <div class="rounded-xl bg-slate-950 border-l-4 border-sky-500 p-5 space-y-2 text-xs sm:text-sm text-slate-300">
+        <h3 class="font-bold text-white uppercase text-xs tracking-wider">Theory: Causative have and get</h3>
+        <p><strong>Form:</strong> <code class="font-mono text-sky-300">have / get + object + past participle (V3)</code></p>
+        <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs">
+          <li><strong>Meaning:</strong> We use this structure when we arrange for someone else (usually a professional) to do something for us.</li>
+          <li><em>She had the old garage turned into a study.</em> (A builder did the work, not her).</li>
+          <li><em>I am getting my roof repaired tomorrow.</em> (Roofers will repair it).</li>
+          <li><strong>Adverse events:</strong> <em>He had his bag stolen on the train.</em> (Something unpleasant happened to him).</li>
+        </ul>
+      </div>
+
+      <!-- Exercise 4.1: Verb Forms -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.1: Verb Form Transformation (19–24 format)</h3>
+          <button onclick="checkGrammar1()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>Last month, Jeff's father had the whole house <input id="g_1" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> by a specialist.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">CHECK</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>We are thinking of getting the entire villa <input id="g_2" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> blue next summer.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">PAINT</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>While they <input id="g_3" type="text" class="sav uppercase bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-32" placeholder="answer"> the windows inspected, water started leaking.</span>
+            <span class="font-mono text-xs text-amber-400 font-bold">HAVE</span>
+          </div>
+        </div>
+        <div id="g_ex1_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 4.2: Sentence Transformation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.2: Key Word Transformation (2–5 words)</h3>
+          <button onclick="checkGrammar2()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>1. Someone stole my bag during the bus journey.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">HAD</p>
+            <p>I <input id="kwt_1" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> during the bus journey.</p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>2. A professional photographer is taking a photo of Stephen.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">PICTURE</p>
+            <p>Stephen is <input id="kwt_2" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> by a professional photographer.</p>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-1.5">
+            <p>3. Steve's father said he wasn't allowed to go to the club.</p>
+            <p class="font-mono text-xs font-bold text-amber-400">LET</p>
+            <p>Steve's father <input id="kwt_3" type="text" class="sav bg-slate-900 border border-slate-700 px-2.5 py-1 rounded text-sky-300 font-bold w-64" placeholder="fill the gap"> to the club.</p>
+          </div>
+        </div>
+        <div id="g_ex2_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+
+      <!-- Exercise 4.3: Error Correction -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <h3 class="text-sm font-bold text-slate-200">Exercise 4.3: Error Identification</h3>
+          <button onclick="checkGrammar3()" class="text-xs px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-bold transition">Check</button>
+        </div>
+        <div class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>1. We had the decorator to paint the hallway yesterday.</span>
+            <input id="ec_1" type="text" class="sav bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-36" placeholder="correction">
+          </div>
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded bg-slate-950 border border-slate-800">
+            <span>2. Students don't suppose to bring animals into the hostel.</span>
+            <input id="ec_2" type="text" class="sav bg-slate-900 border border-slate-700 px-2 py-0.5 rounded text-sky-300 font-bold w-36" placeholder="correction">
+          </div>
+        </div>
+        <div id="g_ex3_fb" class="text-xs font-bold pt-1"></div>
+      </div>
+    </section>
+
+    <!-- ================= 5. SPEAKING ================= -->
+    <section class="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 space-y-6 shadow-md">
+      <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+        <h2 class="text-xl font-bold text-sky-400">5. Speaking Production</h2>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Exam Practice</span>
+      </div>
+
+      <!-- Task 5.1: Interview Simulation -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-200">Task 5.1: Oral Interview (40s response)</h3>
+          <span class="text-xs text-sky-400 font-mono">Timed Drill</span>
+        </div>
+        <div class="space-y-3">
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-slate-200">"What type of house do you live in, and what do you like most about its location?"</p>
+            <div class="flex items-center space-x-2 shrink-0">
+              <span id="tm1" class="font-mono text-xs font-bold text-slate-400">40s</span>
+              <button onclick="runTimer('tm1', 40, this)" class="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-xs font-bold transition">Start</button>
+            </div>
+          </div>
+          <div class="p-3 bg-slate-950 rounded border border-slate-800 flex items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-slate-200">"Do you think having personal space at home is necessary for young people? Why?"</p>
+            <div class="flex items-center space-x-2 shrink-0">
+              <span id="tm2" class="font-mono text-xs font-bold text-slate-400">40s</span>
+              <button onclick="runTimer('tm2', 40, this)" class="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-xs font-bold transition">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task 5.2: Two-Picture Comparison -->
+      <div class="rounded-xl bg-slate-800/60 border border-slate-700/60 p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-200">Task 5.2: Picture Comparison & Discussion</h3>
+          <div class="space-x-2">
+            <button onclick="runTimer('tm_prep', 150, this)" class="px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs font-bold hover:bg-slate-700 transition">Prep: <span id="tm_prep">2m 30s</span></button>
+            <button onclick="runTimer('tm_spk', 180, this)" class="px-3 py-1 bg-sky-600 text-white rounded text-xs font-bold hover:bg-sky-500 transition">Speak: <span id="tm_spk">3m 00s</span></button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5">
+            <span class="font-bold text-sky-400 uppercase tracking-wider">Photo 1: Country Garden House</span>
+            <p class="text-slate-400">Family growing vegetables, open green space, fresh air, maintenance duties, isolated from city entertainment.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5">
+            <span class="font-bold text-indigo-400 uppercase tracking-wider">Photo 2: High-Rise City Balcony</span>
+            <p class="text-slate-400">Compact balcony overlooking skyline, crowded amenities, close to culture and shops, possible noise and pollution.</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 space-y-1">
+          <p class="font-bold text-white uppercase text-[11px]">Speech Plan:</p>
+          <p>1. Open message to friend & mention project relevance.</p>
+          <p>2. Give 2 differences between living environments.</p>
+          <p>3. Give 1 advantage & 1 disadvantage of each place.</p>
+          <p>4. State your personal preference with reasons.</p>
+        </div>
+        <textarea id="spk_notes" class="sav w-full p-3 rounded bg-slate-950 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500" rows="3" placeholder="Notes for your oral response..."></textarea>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JAVASCRIPT: LOGIC & PERSISTENCE -->
+  <script>
+    const CARDS = [
+      { w: "housing estate", t: "/ˈhaʊ.zɪŋ ɪˌsteɪt/", r: "жилой массив / комплекс", c: "residing on a newly planned housing estate" },
+      { w: "within walking distance", t: "/wɪˈðɪn ˈwɔː.kɪŋ ˈdɪs.təns/", r: "в пешей доступности", c: "shops within walking distance" },
+      { w: "personal space", t: "/ˈpɜː.sən.əl speɪs/", r: "личное пространство", c: "invading someone's personal space" },
+      { w: "ample room", t: "/ˈæm.pəl ruːm/", r: "достаточно места / простор", c: "ample room for books and furniture" },
+      { w: "parking space", t: "/ˈpɑː.kɪŋ speɪs/", r: "парковочное место", c: "searching for an empty parking space" },
+      { w: "prime location", t: "/praɪm ləʊˈkeɪ.ʃən/", r: "выгодное расположение", c: "a flat in a prime location near the canal" },
+      { w: "market square", t: "/ˈmɑː.kɪt skweər/", r: "рыночная площадь", c: "windows overlooking the central square" },
+      { w: "residential area", t: "/ˌrez.ɪˈden.ʃəl ˈeə.ri.ə/", r: "жилой / спальный район", c: "relocating to a quiet residential area" },
+      { w: "spacious", t: "/ˈspeɪ.ʃəs/", r: "просторный, вместительный", c: "a spacious, sunny living room" },
+      { w: "cramped", t: "/kræmpt/", r: "тесный, загроможденный", c: "cramped quarters in an old boat" }
+    ];
+
+    let cardIdx = 0;
+    let cardStats = {};
+
+    function updateCardView() {
+      const c = CARDS[cardIdx];
+      document.getElementById('fc-word').innerText = c.w;
+      document.getElementById('fc-transc').innerText = c.t;
+      document.getElementById('fc-trans').innerText = c.r;
+      document.getElementById('fc-colloc').innerText = `"${c.c}"`;
+      
+      const done = cardStats[c.w] ? " ✓" : "";
+      document.getElementById('fc-stat').innerText = `Card ${cardIdx + 1} / ${CARDS.length}${done}`;
+      document.getElementById('fc-box').classList.remove('flipped');
+    }
+
+    function toggleCard() {
+      document.getElementById('fc-box').classList.toggle('flipped');
+    }
+
+    function nextCard() {
+      cardIdx = (cardIdx + 1) % CARDS.length;
+      updateCardView();
+    }
+
+    function prevCard() {
+      cardIdx = (cardIdx - 1 + CARDS.length) % CARDS.length;
+      updateCardView();
+    }
+
+    function markCard(mastered) {
+      cardStats[CARDS[cardIdx].w] = mastered;
+      localStorage.setItem('hs_c_stats', JSON.stringify(cardStats));
+      updateCardView();
+      calcProgress();
+      nextCard();
+    }
+
+    function checkVocab1() {
+      const keys = { v_ex1_1: "room", v_ex1_2: "space", v_ex1_3: "place", v_ex1_4: "area" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value === keys[k]) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 text-emerald-300 font-bold rounded px-2 py-0.5 mx-1";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 text-rose-300 font-bold rounded px-2 py-0.5 mx-1";
+        }
+      }
+      document.getElementById('v_ex1_fb').innerText = `Score: ${c} / 4`;
+      document.getElementById('v_ex1_fb').className = `text-xs font-bold pt-1 ${c === 4 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkVocab2() {
+      const keys = { wf_1: "SHORTAGE", wf_2: "RESIDENTIAL", wf_3: "SPACIOUS" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value.trim().toUpperCase() === keys[k]) {
+          el.className = "sav uppercase bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-32";
+          c++;
+        } else {
+          el.className = "sav uppercase bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-32";
+        }
+      }
+      document.getElementById('v_ex2_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('v_ex2_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkVocab3() {
+      const keys = { mc_1: "2", mc_2: "1" };
+      let c = 0;
+      for (let k in keys) {
+        const r = document.querySelector(`input[name="${k}"]:checked`);
+        if (r && r.value === keys[k]) c++;
+      }
+      document.getElementById('v_ex3_fb').innerText = `Score: ${c} / 2`;
+      document.getElementById('v_ex3_fb').className = `text-xs font-bold pt-1 ${c === 2 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkReading1() {
+      const keys = { r_tf_1: "F", r_tf_2: "F", r_tf_3: "T" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value === keys[k]) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 text-emerald-300 font-bold rounded px-2 py-0.5 text-xs";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 text-rose-300 font-bold rounded px-2 py-0.5 text-xs";
+        }
+      }
+      document.getElementById('r_ex1_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('r_ex1_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkGrammar1() {
+      const keys = { g_1: "CHECKED", g_2: "PAINTED", g_3: "WERE HAVING" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        if (el.value.trim().toUpperCase() === keys[k]) {
+          el.className = "sav uppercase bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-32";
+          c++;
+        } else {
+          el.className = "sav uppercase bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-32";
+        }
+      }
+      document.getElementById('g_ex1_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('g_ex1_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkGrammar2() {
+      const keys = {
+        kwt_1: ["HAD MY BAG STOLEN"],
+        kwt_2: ["HAVING HIS PICTURE TAKEN", "GETTING HIS PICTURE TAKEN"],
+        kwt_3: ["WOULD NOT LET HIM GO", "REFUSED TO LET HIM GO", "DID NOT LET HIM GO"]
+      };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        const val = el.value.trim().toUpperCase();
+        if (keys[k].includes(val)) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 px-2.5 py-1 rounded text-emerald-300 font-bold w-64";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 px-2.5 py-1 rounded text-rose-300 font-bold w-64";
+        }
+      }
+      document.getElementById('g_ex2_fb').innerText = `Score: ${c} / 3`;
+      document.getElementById('g_ex2_fb').className = `text-xs font-bold pt-1 ${c === 3 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    function checkGrammar3() {
+      const keys = { ec_1: "PAINT", ec_2: "AREN'T SUPPOSED" };
+      let c = 0;
+      for (let k in keys) {
+        const el = document.getElementById(k);
+        const val = el.value.trim().toUpperCase();
+        if (val === keys[k] || (k === 'ec_2' && val === "ARE NOT SUPPOSED")) {
+          el.className = "sav bg-emerald-950 border border-emerald-500 px-2 py-0.5 rounded text-emerald-300 font-bold w-36";
+          c++;
+        } else {
+          el.className = "sav bg-rose-950 border border-rose-500 px-2 py-0.5 rounded text-rose-300 font-bold w-36";
+        }
+      }
+      document.getElementById('g_ex3_fb').innerText = `Score: ${c} / 2`;
+      document.getElementById('g_ex3_fb').className = `text-xs font-bold pt-1 ${c === 2 ? 'text-emerald-400' : 'text-amber-400'}`;
+      calcProgress();
+    }
+
+    const timers = {};
+    function runTimer(id, sec, btn) {
+      if (timers[id]) clearInterval(timers[id]);
+      let rem = sec;
+      const el = document.getElementById(id);
+      btn.disabled = true;
+
+      const fmt = (s) => {
+        const m = Math.floor(s / 60);
+        const sc = s % 60;
+        return m > 0 ? `${m}m ${sc < 10 ? '0' : ''}${sc}s` : `${sc}s`;
+      };
+
+      el.innerText = fmt(rem);
+      el.className = "font-mono text-xs font-bold text-amber-400";
+
+      timers[id] = setInterval(() => {
+        rem--;
+        el.innerText = fmt(rem);
+        if (rem <= 0) {
+          clearInterval(timers[id]);
+          el.innerText = "Time!";
+          el.className = "font-mono text-xs font-bold text-rose-500";
+          btn.disabled = false;
+        }
+      }, 1000);
+    }
+
+    function calcProgress() {
+      let total = 0;
+      let filled = 0;
+
+      document.querySelectorAll('.sav').forEach(el => {
+        total++;
+        if (el.value && el.value.trim().length > 0) filled++;
+      });
+
+      ['mc_1', 'mc_2'].forEach(name => {
+        total++;
+        if (document.querySelector(`input[name="${name}"]:checked`)) filled++;
+      });
+
+      total += CARDS.length;
+      filled += Object.values(cardStats).filter(v => v === true).length;
+
+      const pct = Math.round((filled / total) * 100) || 0;
+      document.getElementById('prog-bar').style.width = pct + '%';
+      document.getElementById('prog-pct').innerText = pct + '%';
+    }
+
+    function initLesson() {
+      document.querySelectorAll('.sav').forEach(el => {
+        const saved = localStorage.getItem('hs2_' + el.id);
+        if (saved !== null) el.value = saved;
+        el.addEventListener('input', () => {
+          localStorage.setItem('hs2_' + el.id, el.value);
+          calcProgress();
+        });
+      });
+
+      document.querySelectorAll('.sav-r').forEach(el => {
+        const saved = localStorage.getItem('hs2_rad_' + el.name);
+        if (saved !== null && el.value === saved) el.checked = true;
+        el.addEventListener('change', () => {
+          if (el.checked) {
+            localStorage.setItem('hs2_rad_' + el.name, el.value);
+            calcProgress();
+          }
+        });
+      });
+
+      const s = localStorage.getItem('hs_c_stats');
+      if (s) cardStats = JSON.parse(s);
+
+      updateCardView();
+      calcProgress();
+    }
+
+    document.addEventListener('DOMContentLoaded', initLesson);
+  </script>
+</body>
+</html>
