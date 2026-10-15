@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGE & First Prep • Unit: Fiesta, Celebrations and Culture</title>
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --card-bg: #161f30;
+            --subcard-bg: #1e293b;
+            --border-color: #334155;
+            --text-main: #cbd5e1;
+            --text-bright: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-cyan: #22d3ee;
+            --accent-purple: #c084fc;
+            --accent-amber: #f59e0b;
+            --accent-emerald: #3fb950;
+            --accent-crimson: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .header-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 34px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .header-card h1 {
+            color: var(--text-bright);
+            font-size: 2.1rem;
+            margin-bottom: 8px;
+        }
+
+        .header-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .svg-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            color: var(--accent-cyan);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .exercise {
+            background-color: var(--subcard-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .exercise-title {
+            color: var(--text-bright);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .instruction {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .instruction em {
+            color: var(--accent-amber);
+            font-style: normal;
+        }
+
+        .exam-tag {
+            display: inline-block;
+            background-color: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            margin-bottom: 6px;
+            align-self: flex-start;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        li {
+            font-size: 0.95rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .vocab-table th, .vocab-table td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.93rem;
+        }
+
+        .vocab-table th {
+            color: var(--accent-blue);
+            background-color: rgba(56, 189, 248, 0.08);
+            font-weight: 600;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .word {
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .text-box {
+            background-color: #0f172a;
+            border-left: 4px solid var(--accent-blue);
+            padding: 18px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .text-box p {
+            margin-bottom: 12px;
+        }
+
+        .text-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .theory-box {
+            background: rgba(192, 132, 252, 0.07);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 10px;
+        }
+
+        .theory-box h4 {
+            color: #d8b4fe;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .options-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .options-list label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.92rem;
+            color: var(--text-main);
+        }
+
+        .options-list label:hover {
+            color: var(--text-bright);
+        }
+
+        input[type="text"] {
+            background-color: #0b1120;
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+        }
+
+        input[type="text"].correct {
+            border-color: var(--accent-emerald) !important;
+            background-color: rgba(63, 185, 80, 0.12) !important;
+        }
+
+        input[type="text"].incorrect {
+            border-color: var(--accent-crimson) !important;
+            background-color: rgba(248, 81, 73, 0.12) !important;
+        }
+
+        textarea {
+            width: 100%;
+            background-color: #0b1120;
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.93rem;
+            font-family: inherit;
+            outline: none;
+            resize: vertical;
+            min-height: 95px;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-check {
+            align-self: flex-start;
+            background-color: #1e293b;
+            color: var(--text-bright);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .btn-check:hover {
+            background-color: #334155;
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .feedback-msg {
+            font-size: 0.88rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .feedback-msg.show {
+            display: block;
+        }
+
+        .feedback-msg.good {
+            color: var(--accent-emerald);
+        }
+
+        .feedback-msg.bad {
+            color: var(--accent-crimson);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-card">
+        <span class="badge">EGE Preparation • Cultural Heritage</span>
+        <h1>Fiesta, Celebrations and Public Spectacles</h1>
+        <p>Cultural Traditions, Street Carnivals & EGE Exam Practice • Grammar: The Passive Voice in Descriptions</p>
+    </div>
+
+    <!-- 1. WARM UP -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div class="section-title">1. Warm-Up</div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 1.1: Festivals in Society & Personal Experience</div>
+            <div class="instruction">Discuss these questions with your tutor using 2–3 full sentences:</div>
+            <ul>
+                <li>What is the most memorable public festival or celebration you have ever attended? What made the atmosphere special?</li>
+                <li>Why do traditional festivals (such as Maslenitsa in Russia or midsummer carnivals) remain popular among teenagers despite modern digital entertainment?</li>
+                <li>Would you rather attend a massive open-air music festival with thousands of people or a small, historical town carnival? Give reasons for your choice.</li>
+            </ul>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 1.2: Categorisation (Cultural Value vs Organisation Challenges)</div>
+            <div class="instruction">Categorise each aspect as an <b>Advantage (ADV)</b> or a <b>Challenge (CHAL)</b>:</div>
+            <ol>
+                <li>Boosting local tourism and bringing financial profit to regional businesses &rarr; [ <input type="text" size="5" data-ans="adv" placeholder="..."> ]</li>
+                <li>Preserving ancient folklore customs, traditional crafts, and indigenous music &rarr; [ <input type="text" size="5" data-ans="adv" placeholder="..."> ]</li>
+                <li>Dealing with extensive street litter, traffic congestion, and overcrowded public transport &rarr; [ <input type="text" size="5" data-ans="chal" placeholder="..."> ]</li>
+                <li>Ensuring strict safety and security measures to prevent crowd crushes &rarr; [ <input type="text" size="5" data-ans="chal" placeholder="..."> ]</li>
+                <li>Strengthening community identity and bringing different generations together &rarr; [ <input type="text" size="5" data-ans="adv" placeholder="..."> ]</li>
+                <li>Excessive budget costs for staging, audio equipment, and professional performers &rarr; [ <input type="text" size="5" data-ans="chal" placeholder="..."> ]</li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 2. VOCABULARY -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+            <div class="section-title">2. Vocabulary: Festivals & Celebrations</div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Vocabulary Reference Table</div>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Word / Phrase</th>
+                        <th>Part of Speech / Note</th>
+                        <th>Meaning / Definition</th>
+                        <th>Russian Translation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="word">celebrate</td>
+                        <td>verb [T/I]</td>
+                        <td>to take part in special enjoyable activities for an event</td>
+                        <td>праздновать, отмечать</td>
+                    </tr>
+                    <tr>
+                        <td class="word">celebration</td>
+                        <td>noun [C/U]</td>
+                        <td>a special social event organised to mark something</td>
+                        <td>празднование, торжество</td>
+                    </tr>
+                    <tr>
+                        <td class="word">commemorate</td>
+                        <td>verb [T]</td>
+                        <td>to honour and remember an important person or event</td>
+                        <td>чтить память, отмечать годовщину</td>
+                    </tr>
+                    <tr>
+                        <td class="word">spectator</td>
+                        <td>noun [C]</td>
+                        <td>a person who watches an event, show, or street parade</td>
+                        <td>зритель (на улице / мероприятии)</td>
+                    </tr>
+                    <tr>
+                        <td class="word">spectacle</td>
+                        <td>noun [C]</td>
+                        <td>an unusual, visually striking performance or grand event</td>
+                        <td>зрелище</td>
+                    </tr>
+                    <tr>
+                        <td class="word">take place</td>
+                        <td>collocation</td>
+                        <td>to happen or occur (used for scheduled events)</td>
+                        <td>проходить, иметь место</td>
+                    </tr>
+                    <tr>
+                        <td class="word">fireworks display</td>
+                        <td>collocation</td>
+                        <td>a public show of colourful shooting fireworks</td>
+                        <td>салют, фейерверк</td>
+                    </tr>
+                    <tr>
+                        <td class="word">annual</td>
+                        <td>adjective</td>
+                        <td>happening once every year</td>
+                        <td>ежегодный</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Vocab 1: Confusable words -->
+        <div class="exercise">
+            <span class="exam-tag">EGE Tasks 30–36 Focus</span>
+            <div class="exercise-title">Exercise 2.1: Contextual Word Choice</div>
+            <div class="instruction">Choose the correct option:</div>
+            <ol>
+                <li>The historical reenactment will (<i>take place / take part / take hold</i>) in the central square next Saturday. &rarr; <input type="text" data-ans="take place" placeholder="..."></li>
+                <li>Every May, the town erects a monument to (<i>celebrate / commemorate / congratulate</i>) fallen historical heroes. &rarr; <input type="text" data-ans="commemorate" placeholder="..."></li>
+                <li>More than fifty thousand (<i>spectators / audiences / viewers</i>) lined the streets to watch the parade. &rarr; <input type="text" data-ans="spectators" placeholder="..."></li>
+                <li>The carnival is an (<i>annual / anniversary / ancient</i>) event that has been held every July for three centuries. &rarr; <input type="text" data-ans="annual" placeholder="..."></li>
+                <li>The midnight festivities ended with a magnificent (<i>fireworks display / fireworks scene / light exhibition</i>). &rarr; <input type="text" data-ans="fireworks display" placeholder="..."></li>
+                <li>The municipal council decided to (<i>hold / make / do</i>) a street parade despite the rain forecast. &rarr; <input type="text" data-ans="hold" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Vocab 2: Word Formation -->
+        <div class="exercise">
+            <span class="exam-tag">EGE Tasks 25–29 Focus</span>
+            <div class="exercise-title">Exercise 2.2: Suffixes Forming Personal Nouns (-er/-or, -ant, -ian)</div>
+            <div class="instruction">Form a person noun from each word in capitals:</div>
+            <ol>
+                <li>Over three hundred costumed <input type="text" data-ans="dancers" placeholder="..."> joined the procession. [<b>DANCE</b>]</li>
+                <li>Every <input type="text" data-ans="participant" placeholder="..."> in the folk competition received a commemorative medal. [<b>PARTICIPATE</b>]</li>
+                <li>The organizers hired a talented street <input type="text" data-ans="magician" placeholder="..."> to entertain children. [<b>MAGIC</b>]</li>
+                <li>Acoustic folk <input type="text" data-answers="performers" placeholder="..."> played instruments along the boulevard. [<b>PERFORM</b>]</li>
+                <li>The festival <input type="text" data-ans="organiser|organizer" placeholder="..."> coordinated the safety teams efficiently. [<b>ORGANISE</b>]</li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Vocab 3: Collocations -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 2.3: Topic Collocations Match</div>
+            <div class="instruction">Match the verbs (1–4) with their natural complements: <em>[ancient ritual, costumes, crowds, heritage]</em></div>
+            <ol>
+                <li>dress up in traditional &rarr; <input type="text" data-ans="costumes" placeholder="..."></li>
+                <li>draw huge &rarr; <input type="text" data-ans="crowds" placeholder="..."> of tourists</li>
+                <li>carry out an &rarr; <input type="text" data-ans="ancient ritual" placeholder="..."></li>
+                <li>preserve regional cultural &rarr; <input type="text" data-ans="heritage" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 3. READING -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.5 1 5.5v15.5c1.45-1.1 3.55-1.5 5.5-1.5s4.05.4 5.5 1.5c1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5V5z"/></svg>
+            <div class="section-title">3. Reading: The Colours of San Juan</div>
+        </div>
+
+        <div class="text-box">
+            <p><strong>Paragraph 1: Ancient Roots and Fire Rituals.</strong> Across the coastal towns of Spain, the arrival of midsummer is marked by the festival of <em>Noche de San Juan</em>. Although the celebration is officially linked with the feast day of Saint John the Baptist, its traditions originate in pre-Christian pagan ceremonies celebrating the summer solstice. Communities gather on local beaches as darkness falls, where gigantic bonfires are lit. According to centuries-old belief, the leaping flames possess purifying powers that burn away misfortune and prepare people for a prosperous harvest season.</p>
+
+            <p><strong>Paragraph 2: Midnight Customs and the Sea.</strong> As the clock strikes midnight, the festivities reach their emotional peak. Spectators throw handwritten notes containing negative memories or bad habits directly into the roaring fires, symbolically cutting ties with their past. Immediately afterwards, hundreds of brave participants run into the cold sea waves. Ancient folklore dictates that bathing in the ocean at midnight cleanses the soul, cures ailments, and guarantees good luck for the rest of the year.</p>
+
+            <p><strong>Paragraph 3: Visual Splendour and Modern Organisation.</strong> In modern times, San Juan has evolved into a vibrant public spectacle that blends heritage with contemporary music. While young people play guitars and dance around smaller embers on the sand, town halls organize dazzling fireworks displays and street parades featuring giant papier-mâché figures. Food stalls are erected along coastal boulevards, serving traditional <em>coca</em> bread topped with candied fruits and pine nuts.</p>
+
+            <p><strong>Paragraph 4: Tourism and Ecological Concerns.</strong> Despite the undeniable cultural value of San Juan, the immense popularity of the festival has prompted heated environmental debates. Once the music fades and the crowds disperse at dawn, municipal cleaners are left with tons of discarded plastic bottles and charred debris scattered across the shoreline. As a result, local councils have recently introduced strict regulations, banning commercial wood pallets containing nails and urging visitors to keep the beaches clean.</p>
+        </div>
+
+        <!-- Reading 1: Multiple choice -->
+        <div class="exercise">
+            <span class="exam-tag">EGE Tasks 12–18 Focus</span>
+            <div class="exercise-title">Exercise 3.1: Multiple Choice Reading Comprehension</div>
+            <div class="instruction">Choose the correct option (A, B, C or D):</div>
+            
+            <div>
+                <p><b>1. What is the historical origin of the Noche de San Juan celebration?</b></p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="sj_q1" value="A"> A) It was founded in the 20th century to attract international summer tourists.</label></li>
+                    <li><label><input type="radio" name="sj_q1" value="B"> B) It stems from ancient pagan solstice rituals predating Christianity.</label></li>
+                    <li><label><input type="radio" name="sj_q1" value="C"> C) It started as a demonstration by maritime fishermen.</label></li>
+                    <li><label><input type="radio" name="sj_q1" value="D"> D) It was invented by bakers in Madrid to sell traditional festival bread.</label></li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <p><b>2. Why do festival participants run into the sea at midnight?</b></p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="sj_q2" value="A"> A) To compete in an annual swimming tournament.</label></li>
+                    <li><label><input type="radio" name="sj_q2" value="B"> B) Because folklore claims midnight seawater cures ailments and brings good fortune.</label></li>
+                    <li><label><input type="radio" name="sj_q2" value="C"> C) To put out burning embers washed into the tide.</label></li>
+                    <li><label><input type="radio" name="sj_q2" value="D"> D) To look for lost silver coins thrown from boats.</label></li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <p><b>3. What serious problem do coastal authorities face following the celebration?</b></p>
+                <ul class="options-list">
+                    <li><label><input type="radio" name="sj_q3" value="A"> A) Complete collapse of airport terminal systems.</label></li>
+                    <li><label><input type="radio" name="sj_q3" value="B"> B) Massive amounts of discarded waste and environmental debris on beaches.</label></li>
+                    <li><label><input type="radio" name="sj_q3" value="C"> C) Shortages of fresh water in coastal hotels.</label></li>
+                    <li><label><input type="radio" name="sj_q3" value="D"> D) Strikes by street musicians and performers.</label></li>
+                </ul>
+            </div>
+
+            <button class="btn-check" onclick="checkRadioExercise()">Check Multiple Choice</button>
+            <div class="feedback-msg" id="sj_feedback"></div>
+        </div>
+
+        <!-- Reading 2: Context definitions -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 3.2: Contextual Word Search</div>
+            <div class="instruction">Find words in the text corresponding to these definitions:</div>
+            <ol>
+                <li>Large outdoor fires built for celebrations (Paragraph 1): &rarr; <input type="text" data-ans="bonfires" placeholder="..."></li>
+                <li>Minor physical illnesses or medical complaints (Paragraph 2): &rarr; <input type="text" data-ans="ailments" placeholder="..."></li>
+                <li>Burned, blackened remains of wood (Paragraph 4): &rarr; <input type="text" data-ans="charred" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 4. GRAMMAR -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.1.8-1.3-4.5-2.7V7z"/></svg>
+            <div class="section-title">4. Grammar: The Passive Voice in Festival Descriptions</div>
+        </div>
+
+        <div class="theory-box">
+            <h4>Grammar in Culture: Form and Usage</h4>
+            <p>When reporting public events, rituals, and traditions, the <b>Passive Voice</b> is preferred because the celebration itself is more important than who specifically carries it out:</p>
+            <p><strong>Formula:</strong> Object + <b>be</b> (in the correct tense) + <b>V3 (Past Participle)</b></p>
+            <p>• <i>Present Simple:</i> The festival <b>is celebrated</b> annually in June.<br>
+            • <i>Past Simple:</i> Giant bonfires <b>were lit</b> along the coastline.<br>
+            • <i>Present Perfect:</i> Strict safety regulations <b>have been introduced</b> recently.<br>
+            • <i>Modals:</i> Cultural heritage <b>must be protected</b> by future generations.</p>
+        </div>
+
+        <!-- Grammar 1: Tense form -->
+        <div class="exercise">
+            <span class="exam-tag">EGE Tasks 19–24 Focus</span>
+            <div class="exercise-title">Exercise 4.1: Verb Forms in Passive Voice</div>
+            <div class="instruction">Put the verbs in brackets into the correct Passive tense:</div>
+            <ol>
+                <li>Every year, a massive ice festival <input type="text" data-ans="is built" placeholder="build..."> in Harbin by international sculptors.</li>
+                <li>Last summer, the folklore parade <input type="text" data-ans="was attended" placeholder="attend..."> by over sixty thousand spectators.</li>
+                <li>New ecological guidelines <input type="text" data-ans="have been introduced|were introduced" placeholder="introduce..."> by the municipal council recently.</li>
+                <li>In medieval times, midsummer bonfires <input type="text" data-ans="were believed" placeholder="believe..."> to protect crops from storms.</li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Grammar 2: Sentence Transformations -->
+        <div class="exercise">
+            <span class="exam-tag">Use of English / Transformations</span>
+            <div class="exercise-title">Exercise 4.2: Key Word Transformation (2 to 5 words)</div>
+            <div class="instruction">Complete the second sentence so that it has a similar meaning using the word in bold:</div>
+            <ol>
+                <li>
+                    They hold the folklore festival in the central square every spring.<br>
+                    <strong>HELD</strong><br>
+                    The folklore festival <input type="text" style="width: 55%;" data-ans="is held in the" placeholder="..."> central square every spring.
+                </li>
+                <li>
+                    People believe that jumping over the embers brings good health.<br>
+                    <strong>IS</strong><br>
+                    It <input type="text" style="width: 55%;" data-ans="is believed that jumping" placeholder="..."> over the embers brings good health.
+                </li>
+                <li>
+                    The city council has banned fireworks in the historic district.<br>
+                    <strong>BEEN</strong><br>
+                    Fireworks <input type="text" style="width: 55%;" data-ans="have been banned in" placeholder="..."> the historic district.
+                </li>
+                <li>
+                    Volunteers cleaned up the sandy beach before dawn.<br>
+                    <strong>WAS</strong><br>
+                    The sandy beach <input type="text" style="width: 55%;" data-ans="was cleaned up by" placeholder="..."> volunteers before dawn.
+                </li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 5. SPEAKING -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+            <div class="section-title">5. Speaking (EGE Format)</div>
+        </div>
+
+        <div class="exercise">
+            <span class="exam-tag">EGE Speaking Task 3</span>
+            <div class="exercise-title">Task 5.1: Simulated Electronic Assistant Interview</div>
+            <div class="instruction">Answer the 5 questions (40 seconds per question, 2–3 full sentences each):</div>
+            <ol>
+                <li>What public holidays and celebrations are most widely observed in Russia?</li>
+                <li>Do you prefer spending major celebrations with your extended family or going out with friends? Why?</li>
+                <li>What traditional dish or pastry is typically prepared in your family for festive occasions?</li>
+                <li>Why do you think municipal authorities organize open-air concerts and street festivals on national holidays?</li>
+                <li>If you could establish a new national celebration in your country, what would it be dedicated to and why?</li>
+            </ol>
+            <textarea id="speaking_fest_notes" placeholder="Notes on student performance, vocabulary range, and grammar points..."></textarea>
+        </div>
+
+        <div class="exercise">
+            <span class="exam-tag">EGE Speaking Task 4</span>
+            <div class="exercise-title">Task 5.2: Project Photo Comparison: «Celebrations and Leisure»</div>
+            <div class="instruction">
+                Imagine you are doing a project on <b>«Celebrations and Leisure»</b>.<br>
+                • <b>Photo 1:</b> A crowded, vibrant open-air street festival with costumed dancers.<br>
+                • <b>Photo 2:</b> A quiet family dinner around a decorated dining table at home.<br>
+                Deliver a coherent monologue covering the 4 project plan steps (12–15 sentences):
+            </div>
+            <ul>
+                <li><strong>1. Brief description:</strong> Give a concise description of both photos, justifying how they illustrate the project topic.</li>
+                <li><strong>2. Differences:</strong> Highlight two distinct differences (e.g., massive public celebration vs. intimate domestic setting).</li>
+                <li><strong>3. Pros & Cons:</strong> State one advantage and one disadvantage of each type of celebration.</li>
+                <li><strong>4. Personal preference:</strong> State which celebration you personally prefer and give detailed reasons.</li>
+            </ul>
+            <textarea id="speaking_photo_notes" placeholder="Draft key linking phrases or outline points here..."></textarea>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // LocalStorage Auto-Save
+    document.addEventListener("DOMContentLoaded", () => {
+        // Text inputs & textareas
+        const textFields = document.querySelectorAll("input[type='text'], textarea");
+        textFields.forEach((field, idx) => {
+            const saved = localStorage.getItem("fiesta_ege_field_" + idx);
+            if (saved !== null) field.value = saved;
+            field.addEventListener("input", () => {
+                localStorage.setItem("fiesta_ege_field_" + idx, field.value);
+            });
+        });
+
+        // Radio buttons (Multiple choice)
+        const radios = document.querySelectorAll("input[type='radio']");
+        radios.forEach(radio => {
+            const savedRadio = localStorage.getItem("fiesta_ege_radio_" + radio.name);
+            if (savedRadio === radio.value) {
+                radio.checked = true;
+            }
+            radio.addEventListener("change", () => {
+                localStorage.setItem("fiesta_ege_radio_" + radio.name, radio.value);
+            });
+        });
+    });
+
+    function cleanStr(s) {
+        return s.toLowerCase()
+                .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+    }
+
+    // Input validation
+    function checkTask(btn) {
+        const container = btn.closest(".exercise");
+        const inputs = container.querySelectorAll("input[type='text']");
+        const feedback = container.querySelector(".feedback-msg");
+        let allOk = true;
+        let count = 0;
+
+        inputs.forEach(input => {
+            const possible = (input.getAttribute("data-ans") || input.getAttribute("data-answers") || "").split("|").map(cleanStr);
+            const val = cleanStr(input.value);
+            if (val.length > 0) count++;
+
+            if (possible.includes(val)) {
+                input.classList.remove("incorrect");
+                input.classList.add("correct");
+            } else {
+                input.classList.remove("correct");
+                input.classList.add("incorrect");
+                allOk = false;
+            }
+        });
+
+        feedback.classList.add("show");
+        if (allOk && count === inputs.length) {
+            feedback.className = "feedback-msg show good";
+            feedback.textContent = "All answers are correct! Great work.";
+        } else {
+            feedback.className = "feedback-msg show bad";
+            feedback.textContent = "Some answers are incorrect or missing. Check your spelling and try again.";
+        }
+    }
+
+    // Radio validation (Reading 3.1)
+    function checkRadioExercise() {
+        const key = { sj_q1: "B", sj_q2: "B", sj_q3: "B" };
+        let allCorrect = true;
+        let answered = 0;
+
+        for (const [name, correctVal] of Object.entries(key)) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            if (selected) {
+                answered++;
+                if (selected.value !== correctVal) {
+                    allCorrect = false;
+                }
+            } else {
+                allCorrect = false;
+            }
+        }
+
+        const feedback = document.getElementById("sj_feedback");
+        feedback.classList.add("show");
+        if (allCorrect && answered === 3) {
+            feedback.className = "feedback-msg show good";
+            feedback.textContent = "All Multiple Choice answers are correct! (1-B, 2-B, 3-B)";
+        } else {
+            feedback.className = "feedback-msg show bad";
+            feedback.textContent = "Some answers are incorrect. Review the text paragraphs carefully.";
+        }
+    }
+</script>
+
+</body>
+</html>
